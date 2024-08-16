@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qvor06tj8ek1"]
+[gd_scene load_steps=8 format=3 uid="uid://qvor06tj8ek1"]
 
-[ext_resource type="PackedScene" uid="uid://csy6sm7jfdouj" path="res://test/shape.tscn" id="1_4folj"]
+[ext_resource type="Script" path="res://test/manager.gd" id="1_b0306"]
+[ext_resource type="PackedScene" uid="uid://osug8tsxi54w" path="res://scenes/replicant.tscn" id="2_blyq8"]
+[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://scenes/shapes/square.tscn" id="3_radrf"]
+[ext_resource type="PackedScene" uid="uid://b6rj8hu8tbdy8" path="res://scenes/replica_arrow.tscn" id="4_5uwn3"]
 
 [sub_resource type="Gradient" id="Gradient_it641"]
 
@@ -9,7 +12,9 @@ gradient = SubResource("Gradient_it641")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qefmn"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("base_replicant")]
+script = ExtResource("1_b0306")
+base_replicant = NodePath("replicas/Replicant")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(464, 185.938)
@@ -17,13 +22,27 @@ rotation = 3.14159
 scale = Vector2(358.75, 451.75)
 texture = SubResource("GradientTexture1D_cr3wl")
 
-[node name="shape" parent="." instance=ExtResource("1_4folj")]
-position = Vector2(776, 244)
-rotation = 0.193882
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(3, 649)
 physics_material_override = SubResource("PhysicsMaterial_qefmn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-2, 0, 1152, -5, 1147, -655, 1080, -655, 1081, -147, 113, -146, 73, -645, -15, -648)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="replicas" type="Node2D" parent="."]
+
+[node name="Replicant" parent="replicas" node_paths=PackedStringArray("pieces") instance=ExtResource("2_blyq8")]
+position = Vector2(549, 494)
+pieces = [NodePath("square")]
+
+[node name="square" parent="replicas/Replicant" node_paths=PackedStringArray("replica_arrows") instance=ExtResource("3_radrf")]
+position = Vector2(-4, -55)
+replica_arrows = [NodePath("ReplicaArrow")]
+
+[node name="ReplicaArrow" parent="replicas/Replicant/square" instance=ExtResource("4_5uwn3")]
+position = Vector2(2, -47)
+target_position = Vector2(-2, -133)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

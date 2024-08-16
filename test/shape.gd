@@ -22,6 +22,6 @@ func _on_timer_timeout():
 	new_shape.global_rotation = ($RayCast2D.target_position - $RayCast2D.position).angle() + global_rotation
 	print(new_shape.global_position, " ", new_shape.global_rotation_degrees)
 	print(new_shape.get_children())
-	new_shape.get_child(1).start()
+	new_shape.get_child(2).start()
 
 	get_parent().add_child(new_shape)
