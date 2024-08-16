@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvor06tj8ek1"]
+
+[ext_resource type="PackedScene" uid="uid://csy6sm7jfdouj" path="res://test/shape.tscn" id="1_4folj"]
+
+[sub_resource type="Gradient" id="Gradient_it641"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cr3wl"]
+gradient = SubResource("Gradient_it641")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qefmn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(464, 185.938)
+rotation = 3.14159
+scale = Vector2(358.75, 451.75)
+texture = SubResource("GradientTexture1D_cr3wl")
+
+[node name="shape" parent="." instance=ExtResource("1_4folj")]
+position = Vector2(776, 244)
+rotation = 0.193882
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 649)
+physics_material_override = SubResource("PhysicsMaterial_qefmn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-2, 0, 1152, -5, 1147, -655, 1080, -655, 1081, -147, 113, -146, 73, -645, -15, -648)
