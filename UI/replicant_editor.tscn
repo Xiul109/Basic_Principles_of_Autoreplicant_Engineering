@@ -29,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_yilh0")
 level = NodePath("Level")
 
@@ -37,8 +38,10 @@ script = ExtResource("2_qbejp")
 
 [node name="PieceSelector" parent="." instance=ExtResource("3_lohb4")]
 layout_mode = 0
+mouse_filter = 1
 
 [node name="Level" parent="." instance=ExtResource("4_fihft")]
 pieces = Array[ExtResource("5_rmudh")]([SubResource("Resource_js02r"), SubResource("Resource_ocmf3"), SubResource("Resource_mwupm")])
+n_arrows = 1
 
 [connection signal="piece_selected" from="PieceSelector" to="." method="_on_piece_selector_piece_selected"]

@@ -1,6 +1,8 @@
 class_name Replicant
 extends Node2D
 
+enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
+
 @export var pieces : Array[Piece]
 # Called when the node enters the scene tree for the first time.
 func _ready():
