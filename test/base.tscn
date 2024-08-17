@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://qvor06tj8ek1"]
 
 [ext_resource type="Script" path="res://test/manager.gd" id="1_b0306"]
-[ext_resource type="PackedScene" uid="uid://osug8tsxi54w" path="res://scenes/replicant.tscn" id="2_blyq8"]
-[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://scenes/shapes/square.tscn" id="3_radrf"]
-[ext_resource type="PackedScene" uid="uid://b6rj8hu8tbdy8" path="res://scenes/replica_arrow.tscn" id="4_5uwn3"]
+[ext_resource type="PackedScene" uid="uid://osug8tsxi54w" path="res://game_elements/replicant.tscn" id="2_blyq8"]
+[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="3_radrf"]
+[ext_resource type="PackedScene" uid="uid://b6rj8hu8tbdy8" path="res://game_elements/replica_arrow.tscn" id="4_5uwn3"]
 
 [sub_resource type="Gradient" id="Gradient_it641"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6rj8hu8tbdy8"]
 
-[ext_resource type="Script" path="res://scenes/replica_arrow.gd" id="1_0st5e"]
+[ext_resource type="Script" path="res://game_elements/replica_arrow.gd" id="1_0st5e"]
 [ext_resource type="Texture2D" uid="uid://b1aw0g45l02lp" path="res://assets/arrowUp.png" id="1_l21kr"]
 
 [node name="ReplicaArrow" type="RayCast2D"]

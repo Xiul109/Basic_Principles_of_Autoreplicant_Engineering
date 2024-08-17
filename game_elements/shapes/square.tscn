@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cytu78s7047jn"]
 
-[ext_resource type="Script" path="res://scenes/shapes/shape.gd" id="1_t6ded"]
+[ext_resource type="Script" path="res://game_elements/shapes/shape.gd" id="1_t6ded"]
 
 [node name="square" type="RigidBody2D"]
 script = ExtResource("1_t6ded")
