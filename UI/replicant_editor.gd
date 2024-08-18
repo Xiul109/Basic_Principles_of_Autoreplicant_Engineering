@@ -27,6 +27,7 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	placer.deleted.connect(_on_piece_deleted)
 	replicant.add_child(floating_piece)
 
+
 func _on_piece_deleted(i: int):
 	pieces_selector.available_pieces[i].count += 1
 	pieces_selector.buttons[i].update_button()

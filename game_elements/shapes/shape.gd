@@ -7,6 +7,9 @@ extends RigidBody2D
 
 @onready var shape := $shape
 
+@onready var shape := $shape
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shape.polygon = $collision.polygon
