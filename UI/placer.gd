@@ -12,6 +12,8 @@ var parent
 var closest_object = null
 var button_index = 0
 
+var is_in_building_area := false
+
 var mode : Replicant.Mode :
 	set(new_mode):
 		mode = new_mode
@@ -66,17 +68,12 @@ func _find_snap_point(ref_pos: Vector2) -> Vector2:
 
 	return closest_point
 
-func _on_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if mode == Replicant.Mode.PLACED:
-			mode = Replicant.Mode.EDITION
-
 func _input(event):
 	if event is not InputEventMouseButton:
 		return
 	
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if mode == Replicant.Mode.EDITION:
+		if mode == Replicant.Mode.EDITION and is_in_building_area:
 			mode = Replicant.Mode.PLACED
 		elif mode == Replicant.Mode.PLACED and _mouse_in:
 			mode = Replicant.Mode.EDITION

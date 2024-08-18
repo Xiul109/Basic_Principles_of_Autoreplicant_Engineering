@@ -11,7 +11,8 @@ func _ready():
 # Called when the node enters the scene tree for the first time.
 func _collision_set(new_collision : CollisionPolygon2D):
 	collision = new_collision
-	update_view()
+	if inner_shape != null:
+		update_view()
 
 func update_view():
 	if collision == null:

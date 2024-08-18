@@ -1,5 +1,5 @@
 class_name ReplicaArrow
-extends RayCast2D
+extends Area2D
 
 @onready var icon = $icon.texture
 
@@ -14,4 +14,5 @@ func _process(_delta):
 
 func _on_placer_mode_changed(new_mode):
 	if new_mode == Replicant.Mode.PLACED and $placer.closest_object != null:
-		reparent($placer.closest_object)
+		var new_parent = $placer.closest_object.find_child("replica_arrows", false)
+		reparent(new_parent)

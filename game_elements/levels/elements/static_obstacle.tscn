@@ -7,5 +7,6 @@
 script = ExtResource("1_stb71")
 
 [node name="PolygonView" parent="." instance=ExtResource("2_32o3j")]
+color = Color(0.467077, 0.152368, 0.00432046, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

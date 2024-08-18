@@ -4,11 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_htkdy"]
 
 [node name="building_zone" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_pqxd3")
 
-[node name="PolygonView" parent="." instance=ExtResource("2_htkdy")]
+[node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_htkdy")]
+position = Vector2(0, -3)
+color = Color(0.300713, 0.108457, 0.448092, 1)
+collision = NodePath("../CollisionPolygon2D")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

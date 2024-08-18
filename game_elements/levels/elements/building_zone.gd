@@ -12,14 +12,31 @@ func check_all_pieces_in_area(total_pieces:int) -> bool:
 	print("Me han preguntado por: "+str(total_pieces)+"    Y yo le he dicho: "+str(pieces_are_in)+"   porqtengo estas piezas: "+str(overlapping_pieces))
 	return pieces_are_in
 
+func _get_placer(body: Node2D) -> Placer:
+	var placers = body.find_children("*", "Placer")
+	if placers.is_empty():
+		return null
+	return placers[0]
 
 func _on_body_entered(body: Node2D) -> void:
-	print("He entrado ahora")
-	#body.valid_position(true)
-	pass # Replace with function body.
+	var placer := _get_placer(body)
+	if placer != null:
+		placer.is_in_building_area = true
 
 
 func _on_body_exited(body: Node2D) -> void:
-	print("He saliddo ahora")
-	#body.valid_position(false)
-	pass # Replace with function body.
+	var placer := _get_placer(body)
+	if placer != null:
+		placer.is_in_building_area = false
+
+
+func _on_area_entered(area):
+	var placer := _get_placer(area)
+	if placer != null:
+		placer.is_in_building_area = true
+
+
+func _on_area_exited(area):
+	var placer := _get_placer(area)
+	if placer != null:
+		placer.is_in_building_area = true

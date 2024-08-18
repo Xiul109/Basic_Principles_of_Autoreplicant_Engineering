@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx12p86m7rbs1"]
+[gd_scene load_steps=4 format=3 uid="uid://dx12p86m7rbs1"]
 
 [ext_resource type="Script" path="res://game_elements/levels/level.gd" id="1_rrg4g"]
-[ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="2_5xhsn"]
+[ext_resource type="PackedScene" uid="uid://dys5j8wks35vc" path="res://game_elements/levels/elements/building_zone.tscn" id="2_5xhsn"]
+[ext_resource type="PackedScene" uid="uid://osug8tsxi54w" path="res://game_elements/replicant.tscn" id="3_c8gsi"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rrg4g")
 
-[node name="building_area" parent="." instance=ExtResource("2_5xhsn")]
-position = Vector2(290.351, 281.906)
-rotation = 1.79044
-scale = Vector2(4.10597, 2.80375)
-
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
+wait_time = 0.5
 
-[connection signal="timeout" from="Timer" to="." method="check_if_pieces_in_zone"]
+[node name="building_area" parent="." instance=ExtResource("2_5xhsn")]
+
+[node name="Replicant" parent="." instance=ExtResource("3_c8gsi")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="building_area"]

@@ -7,8 +7,7 @@ const REPLICA_ARROW = preload("res://game_elements/replica_arrow.tscn")
 		level = new_level
 		update_level()
 
-@onready var replicant = $Replicant
-@onready var pieces_selector = $PieceSelector
+@onready var pieces_selector := $PieceSelector
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +21,9 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	placer.mode = Replicant.Mode.EDITION
 	placer.button_index = button_i
 	placer.deleted.connect(_on_piece_deleted)
-	replicant.add_child(floating_piece)
+	# The name is mandatory to avoid problems on replication
+	floating_piece.name = "piece_%d_%d"%[button_i, pieces_selector.available_pieces[button_i].count]
+	level.replicant.add_child(floating_piece)
 
 
 func _on_piece_deleted(i: int):
@@ -30,7 +31,7 @@ func _on_piece_deleted(i: int):
 	pieces_selector.buttons[i].update_button()
 
 func update_level():
-	if pieces_selector == null:
+	if pieces_selector == null or level == null:
 		return
 	var pieces = level.pieces.duplicate()
 	if level.n_arrows > 0:

@@ -11,6 +11,13 @@ var buttons := []
 @onready var pieces_container = $pieces_container
 
 
+func are_all_pieces_placed() -> bool:
+	for piece in available_pieces:
+		if piece.count > 0:
+			return false
+	return true
+
+
 func _set_total_pieces(pieces : Array[LevelPieces]):
 	total_pieces = pieces
 	available_pieces = total_pieces.duplicate(true)

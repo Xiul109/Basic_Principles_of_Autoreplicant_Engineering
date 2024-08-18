@@ -10,6 +10,7 @@ extends RigidBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shape.collision = $collision
+	
 
 
 func _on_replica_arrows_child_entered_tree(node: Node):

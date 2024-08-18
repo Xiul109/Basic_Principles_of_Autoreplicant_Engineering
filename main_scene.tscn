@@ -1,38 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnh57qej5dk3w"]
+[gd_scene load_steps=2 format=3 uid="uid://cnh57qej5dk3w"]
 
-[ext_resource type="PackedScene" uid="uid://cnif1ug0p3h4l" path="res://UI/replicant_editor.tscn" id="1_ar5rs"]
-[ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="2_5wesm"]
-[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="3_vu36f"]
-[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="4_dlnmr"]
-
-[sub_resource type="Resource" id="Resource_js02r"]
-script = ExtResource("3_vu36f")
-piece_type = ExtResource("4_dlnmr")
-count = 2
-
-[sub_resource type="Resource" id="Resource_ocmf3"]
-script = ExtResource("3_vu36f")
-piece_type = ExtResource("4_dlnmr")
-count = null
-
-[sub_resource type="Resource" id="Resource_mwupm"]
-script = ExtResource("3_vu36f")
-piece_type = ExtResource("4_dlnmr")
-count = 0
+[ext_resource type="PackedScene" uid="uid://c3t66xpdrrig3" path="res://UI/level_interface.tscn" id="1_75evr"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 
-[node name="LevelInterface" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LevelInterface" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_75evr")]
+level = NodePath("Level")
 
-[node name="ReplicantEditor" parent="LevelInterface" node_paths=PackedStringArray("level") instance=ExtResource("1_ar5rs")]
-layout_mode = 1
-level = NodePath("../Level")
-
-[node name="Level" parent="LevelInterface" instance=ExtResource("2_5wesm")]
-pieces = Array[ExtResource("3_vu36f")]([SubResource("Resource_js02r"), SubResource("Resource_ocmf3"), SubResource("Resource_mwupm")])
-n_arrows = 1
+[editable path="LevelInterface"]
