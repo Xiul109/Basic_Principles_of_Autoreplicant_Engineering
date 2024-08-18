@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx12p86m7rbs1"]
 
 [ext_resource type="Script" path="res://game_elements/levels/level.gd" id="1_rrg4g"]
-[ext_resource type="PackedScene" uid="uid://b1r4m8p1y8v0l" path="res://game_elements/levels/_aux/building_zone.tscn" id="2_5xhsn"]
+[ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="2_5xhsn"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rrg4g")

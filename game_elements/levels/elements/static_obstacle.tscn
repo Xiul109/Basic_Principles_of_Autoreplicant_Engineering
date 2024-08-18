@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ttybpuwos4pb"]
+[gd_scene load_steps=3 format=3 uid="uid://b4bfv74tx0ymn"]
 
-[ext_resource type="Texture2D" uid="uid://cd6an61liepoc" path="res://icon.svg" id="1_kydai"]
-[ext_resource type="Script" path="res://static_obstacle.gd" id="2_wjocv"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/static_obstacle.gd" id="1_stb71"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_32o3j"]
 
-[node name="Sprite2D" type="Sprite2D"]
-scale = Vector2(6.60938, 1)
-texture = ExtResource("1_kydai")
+[node name="static_obstacle" type="StaticBody2D"]
+script = ExtResource("1_stb71")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-script = ExtResource("2_wjocv")
+[node name="PolygonView" parent="." instance=ExtResource("2_32o3j")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

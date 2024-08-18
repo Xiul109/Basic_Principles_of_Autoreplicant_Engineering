@@ -2,7 +2,10 @@ extends Control
 
 const REPLICA_ARROW = preload("res://game_elements/replica_arrow.tscn")
 
-@export var level : Level
+@export var level : Level :
+	set(new_level):
+		level = new_level
+		update_level()
 
 @onready var replicant = $Replicant
 @onready var pieces_selector = $PieceSelector
@@ -10,13 +13,7 @@ const REPLICA_ARROW = preload("res://game_elements/replica_arrow.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var pieces = level.pieces.duplicate()
-	if level.n_arrows > 0:
-		var arrows = LevelPieces.new()
-		arrows.piece_type = REPLICA_ARROW
-		arrows.count = level.n_arrows
-		pieces.append(arrows)
-	pieces_selector.total_pieces = pieces
+	update_level()
 
 func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	var floating_piece = piece.instantiate()
@@ -31,3 +28,14 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 func _on_piece_deleted(i: int):
 	pieces_selector.available_pieces[i].count += 1
 	pieces_selector.buttons[i].update_button()
+
+func update_level():
+	if pieces_selector == null:
+		return
+	var pieces = level.pieces.duplicate()
+	if level.n_arrows > 0:
+		var arrows = LevelPieces.new()
+		arrows.piece_type = REPLICA_ARROW
+		arrows.count = level.n_arrows
+		pieces.append(arrows)
+	pieces_selector.total_pieces = pieces

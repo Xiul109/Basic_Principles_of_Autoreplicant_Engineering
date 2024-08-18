@@ -1,26 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnif1ug0p3h4l"]
+[gd_scene load_steps=4 format=3 uid="uid://cnif1ug0p3h4l"]
 
 [ext_resource type="Script" path="res://UI/replicant_editor.gd" id="1_yilh0"]
 [ext_resource type="Script" path="res://game_elements/replicant.gd" id="2_qbejp"]
 [ext_resource type="PackedScene" uid="uid://ccqlvcmm8mb28" path="res://UI/piece_selector.tscn" id="3_lohb4"]
-[ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="4_fihft"]
-[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="5_rmudh"]
-[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="6_1adbo"]
-
-[sub_resource type="Resource" id="Resource_js02r"]
-script = ExtResource("5_rmudh")
-piece_type = ExtResource("6_1adbo")
-count = 2
-
-[sub_resource type="Resource" id="Resource_ocmf3"]
-script = ExtResource("5_rmudh")
-piece_type = ExtResource("6_1adbo")
-count = null
-
-[sub_resource type="Resource" id="Resource_mwupm"]
-script = ExtResource("5_rmudh")
-piece_type = ExtResource("6_1adbo")
-count = 0
 
 [node name="ReplicantEditor" type="Control" node_paths=PackedStringArray("level")]
 layout_mode = 3
@@ -31,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yilh0")
-level = NodePath("Level")
+level = NodePath("")
 
 [node name="Replicant" type="Node2D" parent="."]
 script = ExtResource("2_qbejp")
@@ -39,9 +21,5 @@ script = ExtResource("2_qbejp")
 [node name="PieceSelector" parent="." instance=ExtResource("3_lohb4")]
 layout_mode = 0
 mouse_filter = 1
-
-[node name="Level" parent="." instance=ExtResource("4_fihft")]
-pieces = Array[ExtResource("5_rmudh")]([SubResource("Resource_js02r"), SubResource("Resource_ocmf3"), SubResource("Resource_mwupm")])
-n_arrows = 1
 
 [connection signal="piece_selected" from="PieceSelector" to="." method="_on_piece_selector_piece_selected"]
