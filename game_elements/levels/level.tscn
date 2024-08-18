@@ -12,7 +12,9 @@ wait_time = 0.5
 
 [node name="building_area" parent="." instance=ExtResource("2_5xhsn")]
 
-[node name="Replicant" parent="." instance=ExtResource("3_c8gsi")]
+[node name="replicants" type="Node2D" parent="."]
+
+[node name="BaseReplicant" parent="." instance=ExtResource("3_c8gsi")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 

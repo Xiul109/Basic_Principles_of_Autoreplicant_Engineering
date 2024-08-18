@@ -17,7 +17,6 @@ func replicate() -> Array[Replicant]:
 				piece.global_rotation + arrow.global_rotation
 				# This is added, because the intuition is that up arrow is considered no rotation
 
-			get_parent().add_child(replica)
 			replicas.append(replica)
 	return replicas
 

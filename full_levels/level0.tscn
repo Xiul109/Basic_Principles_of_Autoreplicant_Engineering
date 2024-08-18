@@ -17,13 +17,13 @@ n_arrows = 1
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
 polygon = PackedVector2Array(368, 241, 428, 604, 940, 626, 788, 451, 836, 200)
 
-[node name="Replicant" parent="." index="2"]
-position = Vector2(667, 629)
-
 [node name="static_obstacle" parent="." index="3" instance=ExtResource("4_ycc6e")]
 
 [node name="CollisionPolygon2D" parent="static_obstacle" index="1"]
 polygon = PackedVector2Array(-142, 238, 130, 640, 1176, 633, 1571, 332, 1457, 844, -137, 797)
+
+[node name="BaseReplicant" parent="." index="4"]
+position = Vector2(635, 611)
 
 [editable path="building_area"]
 [editable path="static_obstacle"]

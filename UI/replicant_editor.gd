@@ -23,7 +23,7 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	placer.deleted.connect(_on_piece_deleted)
 	# The name is mandatory to avoid problems on replication
 	floating_piece.name = "piece_%d_%d"%[button_i, pieces_selector.available_pieces[button_i].count]
-	level.replicant.add_child(floating_piece)
+	level.base_replicant.add_child(floating_piece)
 
 
 func _on_piece_deleted(i: int):

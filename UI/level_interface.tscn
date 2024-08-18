@@ -52,7 +52,7 @@ offset_right = -64.0
 offset_bottom = -42.0
 grow_horizontal = 0
 grow_vertical = 0
-disabled = true
 text = "Stop"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StopButton" to="." method="_on_stop_button_pressed"]
