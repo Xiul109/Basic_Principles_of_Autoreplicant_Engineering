@@ -12,8 +12,10 @@ func _ready():
 	shape.polygon = $collision.polygon
 	var inner_pol : PackedVector2Array = shape.polygon.duplicate()
 	for i in len(inner_pol):
-		
-		inner_pol[i] *= .9
+		var v : Vector2 = shape.polygon[i] - shape.polygon[(i + 1)%len(inner_pol)]
+		var offset_dir = v.orthogonal().normalized()
+		inner_pol[i] += offset_dir * border_width
+		inner_pol[(i + 1)%len(inner_pol)] += offset_dir * border_width
 	$shape/inner_shape.polygon = inner_pol
 
 
