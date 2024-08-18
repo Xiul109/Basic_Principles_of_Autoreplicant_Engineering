@@ -16,6 +16,12 @@ polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
 [node name="replica_arrows" type="Node2D" parent="."]
 
 [node name="shape" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-662.097, -793.619, 964.231, -784.051, 900.99, 704.248, -501.26, 675.543)
+
+[node name="inner_shape" type="Polygon2D" parent="shape"]
+color = Color(0.973535, 0.973535, 0.973535, 1)
+polygon = PackedVector2Array(-662.097, -793.619, 964.231, -784.051, 900.99, 704.248, -501.26, 675.543)
 
 [node name="placer" type="Node" parent="."]
 script = ExtResource("3_xfaux")

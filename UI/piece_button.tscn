@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/piece_button.gd" id="1_nx8kj"]
 [ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="2_lju1n"]
-[ext_resource type="Script" path="res://game_elements/levels/aux/level_pieces.gd" id="3_5426v"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="3_5426v"]
 
 [sub_resource type="Resource" id="Resource_e2rpw"]
 script = ExtResource("3_5426v")

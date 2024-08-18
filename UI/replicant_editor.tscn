@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game_elements/replicant.gd" id="2_qbejp"]
 [ext_resource type="PackedScene" uid="uid://ccqlvcmm8mb28" path="res://UI/piece_selector.tscn" id="3_lohb4"]
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="4_fihft"]
-[ext_resource type="Script" path="res://game_elements/levels/aux/level_pieces.gd" id="5_rmudh"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="5_rmudh"]
 [ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="6_1adbo"]
 
 [sub_resource type="Resource" id="Resource_js02r"]
