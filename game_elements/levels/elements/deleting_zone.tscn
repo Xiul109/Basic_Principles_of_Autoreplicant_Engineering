@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw0tf08f2pcyq"]
+
+[ext_resource type="Script" path="res://game_elements/levels/_aux/deleting_zone.gd" id="1_byon2"]
+[ext_resource type="Texture2D" uid="uid://cd6an61liepoc" path="res://icon.svg" id="2_m7kmk"]
+
+[node name="deleting_zone" type="Sprite2D"]
+texture = ExtResource("2_m7kmk")
+
+[node name="deleting_area" type="Area2D" parent="."]
+script = ExtResource("1_byon2")
+
+[connection signal="body_entered" from="deleting_area" to="deleting_area" method="_on_body_entered"]

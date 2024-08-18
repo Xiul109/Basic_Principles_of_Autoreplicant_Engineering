@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1r4m8p1y8v0l"]
+
+[ext_resource type="Script" path="res://game_elements/levels/_aux/building_zone.gd" id="1_l2u32"]
+[ext_resource type="Texture2D" uid="uid://cd6an61liepoc" path="res://icon.svg" id="4_drcsb"]
+
+[node name="building_zone" type="Sprite2D"]
+texture = ExtResource("4_drcsb")
+
+[node name="building_area" type="Area2D" parent="."]
+script = ExtResource("1_l2u32")
+
+[connection signal="body_entered" from="building_area" to="building_area" method="_on_body_entered"]
+[connection signal="body_exited" from="building_area" to="building_area" method="_on_body_exited"]

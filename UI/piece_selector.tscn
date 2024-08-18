@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccqlvcmm8mb28"]
+
+[ext_resource type="Script" path="res://UI/piece_selector.gd" id="1_02h0a"]
+
+[node name="PieceSelector" type="PanelContainer"]
+offset_right = 528.0
+offset_bottom = 129.0
+script = ExtResource("1_02h0a")
+
+[node name="pieces_container" type="HBoxContainer" parent="."]
+layout_mode = 2

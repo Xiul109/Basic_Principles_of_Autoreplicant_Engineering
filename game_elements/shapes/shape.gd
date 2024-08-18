@@ -1,13 +1,23 @@
 class_name Piece
 extends RigidBody2D
 
+@export var icon : Texture2D
 @export var replica_arrows : Array[ReplicaArrow]
+
+@onready var shape := $shape
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_to_group("Piece")
+	shape.polygon = $collision.polygon
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_replica_arrows_child_entered_tree(node: Node):
+	if node is ReplicaArrow:
+		replica_arrows.append(node)
+
+
+func _on_replica_arrows_child_exiting_tree(node):
+	if node in replica_arrows:
+		replica_arrows.erase(node)

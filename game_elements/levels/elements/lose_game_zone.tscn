@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnafq0v3nf3dd"]
+
+[ext_resource type="Texture2D" uid="uid://dcle12sg6ann5" path="res://assets/zona_chunga.png" id="1_8pw6h"]
+[ext_resource type="Script" path="res://game_elements/levels/_aux/lose_game_zone.gd" id="1_a6vgk"]
+
+[node name="lose_game_zone" type="Sprite2D"]
+texture = ExtResource("1_8pw6h")
+
+[node name="lose_game_area" type="Area2D" parent="."]
+script = ExtResource("1_a6vgk")
+
+[connection signal="body_entered" from="lose_game_area" to="lose_game_area" method="_on_body_entered"]

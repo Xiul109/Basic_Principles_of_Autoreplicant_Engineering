@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1u6x2qnbitno"]
+
+[ext_resource type="Script" path="res://UI/piece_button.gd" id="1_nx8kj"]
+[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="2_lju1n"]
+[ext_resource type="Script" path="res://game_elements/levels/aux/level_pieces.gd" id="3_5426v"]
+
+[sub_resource type="Resource" id="Resource_e2rpw"]
+script = ExtResource("3_5426v")
+piece_type = ExtResource("2_lju1n")
+count = 1
+
+[node name="PieceButton" type="Button"]
+offset_right = 101.0
+offset_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_nx8kj")
+level_pieces = SubResource("Resource_e2rpw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

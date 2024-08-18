@@ -13,3 +13,7 @@ config_version=5
 config/name="GMTKJam2024"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalBus="*res://signal_bus.gd"
