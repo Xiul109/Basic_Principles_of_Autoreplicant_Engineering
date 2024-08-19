@@ -9,15 +9,29 @@ enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 
 func replicate() -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
+	var available_arrows:=0
 	for piece in pieces:
-		for arrow in piece.replica_arrows:
-			var replica := duplicate(4)
-			replica.global_position = arrow.global_position
-			replica.global_rotation = \
-				piece.global_rotation + arrow.global_rotation
-				# This is added, because the intuition is that up arrow is considered no rotation
+		print("Tengo estas pieas: "+str(pieces.size()))
+		if is_instance_valid(piece):		#!piece.is_queued_for_deletion():
+			print("Esta es valida: "+str(piece))
+			for arrow in piece.replica_arrows:
+				print("Tenemos flecha")
+				available_arrows+=1
+				var replica := duplicate(4)
+				replica.global_position = arrow.global_position
+				replica.global_rotation = \
+					piece.global_rotation + arrow.global_rotation
+					# This is added, because the intuition is that up arrow is considered no rotation
 
-			replicas.append(replica)
+				replicas.append(replica)
+		else:
+			print("esta no es valida: "+str(piece))
+
+		
+	if available_arrows==0:
+		print("Ninguna flecha en la iteracion")
+		SignalBus.game_lost.emit("no_pieces")
+	
 	return replicas
 
 func _mode_set(new_mode: Mode):

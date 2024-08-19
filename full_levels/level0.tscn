@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkmnskaabvmoa"]
+[gd_scene load_steps=9 format=3 uid="uid://bkmnskaabvmoa"]
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_0up0k"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_u2v5e"]
 [ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="3_k1lpa"]
 [ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="4_ycc6e"]
+[ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_7i7um"]
+[ext_resource type="PackedScene" uid="uid://y6huvfyk425v" path="res://game_elements/levels/elements/lose_game_zone.tscn" id="5_ag78p"]
+[ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="6_bof3s"]
 
 [sub_resource type="Resource" id="Resource_gy12u"]
 script = ExtResource("2_u2v5e")
@@ -17,15 +20,39 @@ n_arrows = 1
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
 polygon = PackedVector2Array(304, 624, 700, 433, 681, 105, 1098, 246, 910, 592)
 
-[node name="static_obstacle" parent="." index="3" instance=ExtResource("4_ycc6e")]
+[node name="lose_game_zone" parent="." index="2" instance=ExtResource("5_ag78p")]
+position = Vector2(-124, 129)
+
+[node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
+polygon = PackedVector2Array(170, 106, 180, 98, 248, 112, 312, 128, 304, -5)
+
+[node name="target_zone" parent="." index="3" instance=ExtResource("5_7i7um")]
+position = Vector2(864, 33)
+
+[node name="CollisionPolygon2D" parent="target_zone" index="1"]
+polygon = PackedVector2Array(97, -4, 100, 124, 355, 136, 402, -4)
+
+[node name="deleting_zone" parent="." index="4" instance=ExtResource("6_bof3s")]
+position = Vector2(350, 199)
+
+[node name="CollisionPolygon2D" parent="deleting_zone" index="1"]
+polygon = PackedVector2Array(-18, 22, -46, -64, 178, -10, 88, -162, 210, -68, 430, 246, 118, 46, 60, -12, 6, 42)
+
+[node name="static_obstacle" parent="." index="6" instance=ExtResource("4_ycc6e")]
 
 [node name="CollisionPolygon2D" parent="static_obstacle" index="1"]
 polygon = PackedVector2Array(-142, 238, 130, 640, 1176, 633, 1571, 332, 1457, 844, -137, 797)
 
-[node name="BaseReplicant" parent="." index="4"]
+[node name="BaseReplicant" parent="." index="7"]
 position = Vector2(635, 611)
 
 [editable path="building_area"]
 [editable path="building_area/PolygonView"]
+[editable path="lose_game_zone"]
+[editable path="lose_game_zone/PolygonView"]
+[editable path="target_zone"]
+[editable path="target_zone/PolygonView"]
+[editable path="deleting_zone"]
+[editable path="deleting_zone/PolygonView"]
 [editable path="static_obstacle"]
 [editable path="static_obstacle/PolygonView"]

@@ -5,6 +5,7 @@ extends Node2D
 @export var n_arrows : int = 0
 
 @onready var building_area: Area2D = $building_area
+
 @onready var base_replicant : Replicant = $BaseReplicant
 @onready var timer = $Timer
 

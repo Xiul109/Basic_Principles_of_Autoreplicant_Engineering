@@ -9,11 +9,11 @@ script = ExtResource("1_pqxd3")
 
 [node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_htkdy")]
 position = Vector2(0, -3)
-color = Color(0.606046, 1.00112e-05, 0.416323, 1)
+color = Color(1, 0.871755, 0.932992, 1)
 collision = NodePath("../CollisionPolygon2D")
 
 [node name="InnerShape" parent="PolygonView" index="0"]
-color = Color(1, 0.190175, 0.896345, 0.635294)
+color = Color(0.150272, 0.25352, 0.930762, 0.635294)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

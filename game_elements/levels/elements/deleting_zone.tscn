@@ -6,9 +6,16 @@
 [node name="deleting_zone" type="Area2D"]
 script = ExtResource("2_upwgt")
 
-[node name="PolygonView" parent="." instance=ExtResource("2_atsi2")]
+[node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_atsi2")]
+color = Color(0.987034, 0.991528, 0.999797, 1)
+collision = NodePath("../CollisionPolygon2D")
+
+[node name="InnerShape" parent="PolygonView" index="0"]
+color = Color(0.992157, 0, 0, 0.552941)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="PolygonView"]

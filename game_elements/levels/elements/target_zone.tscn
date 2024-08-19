@@ -6,9 +6,17 @@
 [node name="target_zone" type="Area2D"]
 script = ExtResource("2_wc2l3")
 
-[node name="PolygonView" parent="." instance=ExtResource("2_fb34k")]
+[node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_fb34k")]
+color = Color(0.999643, 0.856173, 0.849837, 1)
+collision = NodePath("../CollisionPolygon2D")
+
+[node name="InnerShape" parent="PolygonView" index="0"]
+color = Color(0.294118, 0.972549, 0.356863, 0.584314)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(97, -4, 100, 124, 355, 136)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="PolygonView"]

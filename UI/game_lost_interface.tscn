@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://de1ch156rclga"]
+
+[node name="game_lost_interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1278.0
+offset_bottom = 726.0
+
+[node name="LabelText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 332.0
+offset_right = 742.0
+offset_bottom = 355.0
+text = "You lost the game!
+Dont touch the purple areas!"
+
+[node name="button_retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 472.0
+offset_right = 512.0
+offset_bottom = 503.0
+text = "Retry"
+
+[node name="button_menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 460.0
+offset_right = 891.0
+offset_bottom = 491.0
+text = "Back to menu"
