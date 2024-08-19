@@ -6,7 +6,7 @@ var recovery_position : Vector2
 @export var level : Level :
 	set(new_level):
 		level = new_level
-		#add_child(level)
+		add_child(level)
 		if replicant_editor != null:
 			replicant_editor.level = level
 
