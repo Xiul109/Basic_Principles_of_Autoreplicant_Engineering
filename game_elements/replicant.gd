@@ -15,9 +15,10 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	
 	modulate = Color.WHITE
 	
-	if len(arrows)==0:
+	if len(arrows)==0 or are_there_null_arrows():
 		print("Ninguna flecha en la iteracion")
 		SignalBus.game_lost.emit("no_pieces")
+		return []
 	
 	for arrow in arrows:
 		var replica := duplicate(5)
@@ -29,6 +30,11 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	
 	return replicas
 
+func are_there_null_arrows():
+	for arrow in arrows:
+		if arrow == null:
+			return true
+	return false
 
 func update_pos_from_arrow(arrow: ReplicaArrow):
 	global_position = arrow.global_position
