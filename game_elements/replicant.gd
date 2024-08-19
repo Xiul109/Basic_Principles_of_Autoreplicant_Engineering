@@ -5,16 +5,16 @@ enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 
 @export var pieces : Array[Piece]
 @export var mode : Mode = Mode.EDITION : set=_mode_set
+@export var active_color := Color(.9, .3, .3)
 
 var arrows : Array[ReplicaArrow]
 
 	
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
-	#for piece in pieces:
-		#if not is_instance_valid(piece):		#!piece.is_queued_for_deletion():
-			#continue
-		
+	
+	modulate = Color.WHITE
+	
 	if len(arrows)==0:
 		print("Ninguna flecha en la iteracion")
 		SignalBus.game_lost.emit("no_pieces")
@@ -25,8 +25,10 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 		replica.update_pos_from_arrow(arrow)
 		replica.fill_arrows()
 		replicas.append(replica)
+		replica.modulate = active_color
 	
 	return replicas
+
 
 func update_pos_from_arrow(arrow: ReplicaArrow):
 	global_position = arrow.global_position
@@ -40,6 +42,10 @@ func _mode_set(new_mode: Mode):
 			placers[0].mode = mode
 	if mode == Mode.PREVIEW:
 		modulate = Color(.3, .3, .3, .4)
+	if mode != Mode.DEFAULT:
+		$origin.show()
+	else:
+		$origin.hide()
 
 func fill_arrows():
 	for piece in pieces:
