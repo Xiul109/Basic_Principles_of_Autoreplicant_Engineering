@@ -9,7 +9,6 @@ func check_all_pieces_in_area(total_pieces:int) -> bool:
 	var overlapping_pieces:=get_overlapping_bodies()
 	if overlapping_pieces.size()!=total_pieces:
 		pieces_are_in=false
-	print("Me han preguntado por: "+str(total_pieces)+"    Y yo le he dicho: "+str(pieces_are_in)+"   porqtengo estas piezas: "+str(overlapping_pieces))
 	return pieces_are_in
 
 func _get_placer(body: Node2D) -> Placer:

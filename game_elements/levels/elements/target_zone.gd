@@ -7,5 +7,4 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Piece"):
-		print("VICOTIRAAA LLEGASSTE AL AREA")
 		SignalBus.game_won.emit()

@@ -14,7 +14,6 @@ collision = NodePath("../CollisionPolygon2D")
 color = Color(0.317647, 0.12549, 0.698039, 0.686275)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(81, 76, 104, 258, 388, 376, 679, 219, 304, -5)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

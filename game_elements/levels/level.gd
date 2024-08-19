@@ -3,6 +3,7 @@ extends Node2D
 
 @export var pieces : Array[LevelPieces]
 @export var n_arrows : int = 0
+@export_multiline var lvel_instructions:=""
 
 @onready var building_area: Area2D = $building_area
 

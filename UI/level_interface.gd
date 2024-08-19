@@ -23,8 +23,9 @@ var recovery_position : Vector2
 
 
 @export_enum("Building","Replicating") var level_state="Building"
-
 @onready var alert_label: Label = $alert_label
+
+@onready var level_selector: Control = get_node("../CenterContainer/LevelSelector")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,9 +50,12 @@ func game_won():
 	game_won_interface.visible=true
 	level.timer.stop()
 
+func next_level():
+	var r
 
 func go_to_menu():
-	pass
+	level_selector.visible=true
+	self.queue_free()
 
 func alert(text:String):
 	alert_label.visible=true

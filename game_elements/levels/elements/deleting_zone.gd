@@ -13,7 +13,5 @@ func activate_area(value:bool):
 	active=value
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Ha entrado algo en la zona")
 	if body.is_in_group("Piece") and active:
-		print("Entro una pieza")
 		body.queue_free()

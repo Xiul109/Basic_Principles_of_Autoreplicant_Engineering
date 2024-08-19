@@ -7,7 +7,5 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Algo entro! a ver que es: "+str(body))
 	if body.is_in_group("Piece"):
-		print("AAA wey perdiste")
 		SignalBus.game_lost.emit("lost_zone")
