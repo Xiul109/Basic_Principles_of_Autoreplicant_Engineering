@@ -12,8 +12,11 @@ var arrows : Array[ReplicaArrow]
 func _process(delta):
 	for i in len(pieces):
 		$Line2D.points[i] = pieces[i].position
+	
 	if mode != Mode.DEFAULT:
-		_update_positioning()
+		$origin.position = _find_mean_point()
+		#_move_pieces(-_find_mean_point())
+	
 
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
@@ -29,6 +32,7 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 		var replica := duplicate(5)
 		replica.mode = rep_mode
 		replica.update_pos_from_arrow(arrow)
+		replica._delete_pieces_velocity()
 		replica.fill_arrows()
 		replicas.append(replica)
 		replica.modulate = active_color
@@ -42,8 +46,8 @@ func are_there_null_arrows():
 	return false
 
 func update_pos_from_arrow(arrow: ReplicaArrow):
-	global_position = arrow.global_position
 	global_rotation = arrow.global_rotation
+	global_position += arrow.global_position - $origin.global_position
 
 func _mode_set(new_mode: Mode):
 	mode = new_mode
@@ -83,14 +87,20 @@ func _on_child_exiting_tree(node):
 	if node is ReplicaArrow:
 		arrows.erase(node)
 
-func _update_positioning():
-	if len(pieces) <= 0:
-		return
-	
+func _find_mean_point() -> Vector2:
 	var mean_point := Vector2.ZERO
+	if len(pieces) <= 0:
+		return mean_point
+	
 	for piece in pieces:
 		mean_point += piece.position
-	mean_point /= len(pieces)
+	return mean_point / len(pieces)
+
+func _move_pieces(offset : Vector2):
 	for piece in pieces:
-		piece.position -= mean_point
-	position += mean_point
+		piece.position += offset
+	position -= offset
+
+func _delete_pieces_velocity():
+	for piece in pieces:
+		piece.linear_velocity = Vector2.ZERO
