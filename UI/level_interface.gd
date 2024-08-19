@@ -28,7 +28,6 @@ func _on_play_button_pressed():
 	# Setting recovery copy
 	level.base_replicant.mode = Replicant.Mode.PLACED
 	level.base_replicant.hide()
-	level.base_replicant.set_physics_process(false)
 	recovery_position = level.base_replicant.position
 	level.base_replicant.position = Vector2.INF
 	# Hiding unuseful UI
@@ -47,7 +46,6 @@ func _on_stop_button_pressed():
 	# Cleaning and recovering replicant
 	level.clean_replicants()
 	level.base_replicant.show()
-	level.base_replicant.set_physics_process(true)
 	level.base_replicant.position = recovery_position
 	# Showing again UI
 	$PlayButton.show()

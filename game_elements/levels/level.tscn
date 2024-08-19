@@ -19,3 +19,4 @@ wait_time = 0.5
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="building_area"]
+[editable path="building_area/PolygonView"]

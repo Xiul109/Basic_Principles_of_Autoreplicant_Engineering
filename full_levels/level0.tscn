@@ -15,7 +15,7 @@ pieces = Array[ExtResource("2_u2v5e")]([SubResource("Resource_gy12u")])
 n_arrows = 1
 
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
-polygon = PackedVector2Array(368, 241, 428, 604, 940, 626, 788, 451, 836, 200)
+polygon = PackedVector2Array(304, 624, 700, 433, 681, 105, 1098, 246, 910, 592)
 
 [node name="static_obstacle" parent="." index="3" instance=ExtResource("4_ycc6e")]
 
