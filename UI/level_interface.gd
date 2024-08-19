@@ -4,13 +4,9 @@ extends Control
 var recovery_position : Vector2
 
 @onready var game_lost_interface: Control = $game_lost_interface
-@onready var button_lost_menu: Button = $game_lost_interface/button_menu
-@onready var button_retry: Button = $game_lost_interface/button_retry
-
 @onready var game_won_interface: Control = $game_won_interface
-@onready var button_next_level: Button = $game_won_interface/button_next_level
-@onready var button_won_menu: Button = $game_won_interface/button_menu
 
+signal exit_to_menu()
 
 @export var level : Level :
 	set(new_level):
@@ -23,45 +19,36 @@ var recovery_position : Vector2
 
 
 @export_enum("Building","Replicating") var level_state="Building"
+
 @onready var alert_label: Label = $alert_label
-
-@onready var level_selector: Control = get_node("../CenterContainer/LevelSelector")
-
-var game_finished:=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("game_lost",game_lost)
-	button_retry.connect("pressed",_on_stop_button_pressed)
-	button_lost_menu.connect("pressed",go_to_menu)
+	game_lost_interface.button_retry.connect("pressed",_on_stop_button_pressed)
+	game_lost_interface.button_menu.connect("pressed",go_to_menu)
 	
 	SignalBus.connect("game_won",game_won)
-	button_next_level.connect("pressed",_on_stop_button_pressed)
-	button_won_menu.connect("pressed",go_to_menu)
+	game_won_interface.button_next_level.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_retry.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_menu.connect("pressed",go_to_menu)
 
 func game_lost(reason:String):
 	if level_state=="Building":
 		return
-	if not game_finished:
-		game_finished=true
-		game_lost_interface.visible=true
-		level.timer.stop()
+	game_lost_interface.visible=true
+	level.timer.stop()
 
 
 func game_won():
 	if level_state=="Building":
 		return
-	if not game_finished:
-		game_finished=true
-		game_won_interface.visible=true
-		level.timer.stop()
+	game_won_interface.visible=true
+	level.timer.stop()
 
-func next_level():
-	var r
 
 func go_to_menu():
-	level_selector.visible=true
-	self.queue_free()
+	exit_to_menu.emit()
 
 func alert(text:String):
 	alert_label.visible=true

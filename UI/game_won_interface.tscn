@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://baibn74emvb8s"]
+[gd_scene load_steps=3 format=3 uid="uid://baibn74emvb8s"]
+
+[ext_resource type="Script" path="res://UI/game_won_interface.gd" id="1_ouju5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11nvx"]
+bg_color = Color(0.2, 0.2, 0.2, 0.572549)
+corner_detail = 1
 
 [node name="game_won_interface" type="Control"]
 layout_mode = 3
@@ -7,32 +13,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ouju5")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
+[node name="Panel2" type="PanelContainer" parent="."]
 offset_right = 1278.0
 offset_bottom = 726.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_11nvx")
 
-[node name="LabelText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 598.0
-offset_top = 332.0
-offset_right = 742.0
-offset_bottom = 355.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 2
+theme_override_constants/margin_left = 360
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 360
+theme_override_constants/margin_bottom = 250
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VBoxContainer" parent="Panel2/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="LabelText" type="Label" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 6
 text = "Congratulations! You reacheed the objective."
+horizontal_alignment = 1
 
-[node name="button_next_level" type="Button" parent="."]
-layout_mode = 0
-offset_left = 462.0
-offset_top = 472.0
-offset_right = 512.0
-offset_bottom = 503.0
-text = "Next level"
+[node name="HSeparator" type="HSeparator" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer"]
+layout_mode = 2
 
-[node name="button_menu" type="Button" parent="."]
-layout_mode = 0
-offset_left = 776.0
-offset_top = 460.0
-offset_right = 891.0
-offset_bottom = 491.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="button_menu" type="Button" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer/buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Back to menu"
+
+[node name="Control" type="Control" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer/buttons"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="button_retry" type="Button" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer/buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Retry"
+
+[node name="Control2" type="Control" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer/buttons"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="button_next_level" type="Button" parent="Panel2/MarginContainer/PanelContainer/VSplitContainer/MarginContainer/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next level"
