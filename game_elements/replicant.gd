@@ -9,7 +9,10 @@ enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 
 var arrows : Array[ReplicaArrow]
 
-	
+func _process(delta):
+	for i in len(pieces):
+		$Line2D.points[i] = pieces[i].position
+
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
 	
@@ -60,6 +63,7 @@ func fill_arrows():
 func _on_child_entered_tree(node):
 	if node is Piece and node not in pieces:
 		pieces.append(node)
+		$Line2D.add_point(node.position)
 		node.arrow_added.connect(add_arrow)
 		node.arrow_deleted.connect(func(arrow: ReplicaArrow): arrows.erase(arrow))
 	add_arrow(node)

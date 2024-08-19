@@ -11,5 +11,8 @@ position = Vector2(0, 15.71)
 scale = Vector2(0.47, 0.47)
 texture = ExtResource("2_sjqk3")
 
+[node name="Line2D" type="Line2D" parent="."]
+closed = true
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
