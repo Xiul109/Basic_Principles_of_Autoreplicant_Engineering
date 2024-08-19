@@ -5,19 +5,25 @@ enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 
 @export var pieces : Array[Piece]
 @export var mode : Mode = Mode.EDITION : set=_mode_set
+@export var active_color := Color(.9, .3, .3)
 
 var arrows : Array[ReplicaArrow]
 
-	
+func _process(delta):
+	for i in len(pieces):
+		$Line2D.points[i] = pieces[i].position
+	if mode != Mode.DEFAULT:
+		_update_positioning()
+
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
-	#for piece in pieces:
-		#if not is_instance_valid(piece):		#!piece.is_queued_for_deletion():
-			#continue
-		
-	if len(arrows)==0:
+	
+	modulate = Color.WHITE
+	
+	if len(arrows)==0 or are_there_null_arrows():
 		print("Ninguna flecha en la iteracion")
 		SignalBus.game_lost.emit("no_pieces")
+		return []
 	
 	for arrow in arrows:
 		var replica := duplicate(5)
@@ -25,8 +31,15 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 		replica.update_pos_from_arrow(arrow)
 		replica.fill_arrows()
 		replicas.append(replica)
+		replica.modulate = active_color
 	
 	return replicas
+
+func are_there_null_arrows():
+	for arrow in arrows:
+		if arrow == null:
+			return true
+	return false
 
 func update_pos_from_arrow(arrow: ReplicaArrow):
 	global_position = arrow.global_position
@@ -40,6 +53,10 @@ func _mode_set(new_mode: Mode):
 			placers[0].mode = mode
 	if mode == Mode.PREVIEW:
 		modulate = Color(.3, .3, .3, .4)
+	if mode != Mode.DEFAULT:
+		$origin.show()
+	else:
+		$origin.hide()
 
 func fill_arrows():
 	for piece in pieces:
@@ -48,6 +65,7 @@ func fill_arrows():
 func _on_child_entered_tree(node):
 	if node is Piece and node not in pieces:
 		pieces.append(node)
+		$Line2D.add_point(node.position)
 		node.arrow_added.connect(add_arrow)
 		node.arrow_deleted.connect(func(arrow: ReplicaArrow): arrows.erase(arrow))
 	add_arrow(node)
@@ -58,7 +76,21 @@ func add_arrow(arrow):
 
 func _on_child_exiting_tree(node):
 	if node is Piece and node in pieces:
-		pieces.erase(node)
+		var i = pieces.find(node)
+		pieces.pop_at(i)
+		$Line2D.remove_point(i)
 	
 	if node is ReplicaArrow:
 		arrows.erase(node)
+
+func _update_positioning():
+	if len(pieces) <= 0:
+		return
+	
+	var mean_point := Vector2.ZERO
+	for piece in pieces:
+		mean_point += piece.position
+	mean_point /= len(pieces)
+	for piece in pieces:
+		piece.position -= mean_point
+	position += mean_point

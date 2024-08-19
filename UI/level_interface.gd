@@ -75,10 +75,10 @@ func _on_play_button_pressed():
 	level_state="Replicating"
 	# Setting copy 
 	level.base_replicant.mode = Replicant.Mode.DEFAULT
-	print("aqui")
 	var copy_reply = level.base_replicant.duplicate(5)
 	level.replicants_node.add_child(copy_reply)
 	copy_reply.fill_arrows()
+	copy_reply.modulate = copy_reply.active_color
 	level.active_replicants.append(copy_reply)
 	# Setting recovery copy
 	level.base_replicant.mode = Replicant.Mode.PLACED

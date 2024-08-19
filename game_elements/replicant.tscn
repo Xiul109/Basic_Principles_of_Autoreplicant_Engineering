@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://osug8tsxi54w"]
+[gd_scene load_steps=3 format=3 uid="uid://osug8tsxi54w"]
 
 [ext_resource type="Script" path="res://game_elements/replicant.gd" id="1_43msj"]
+[ext_resource type="Texture2D" uid="uid://d3euavbbf0urg" path="res://assets/arrow_decorative_n.png" id="2_sjqk3"]
 
 [node name="Replicant" type="Node2D"]
 script = ExtResource("1_43msj")
+
+[node name="origin" type="Sprite2D" parent="."]
+position = Vector2(0, 15.71)
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("2_sjqk3")
+
+[node name="Line2D" type="Line2D" parent="."]
+closed = true
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

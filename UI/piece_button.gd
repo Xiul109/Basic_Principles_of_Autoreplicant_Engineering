@@ -15,7 +15,6 @@ func _level_pieces_set(pieces: LevelPieces):
 	update_button()
 
 func update_button():
-
 	var piece = level_pieces.piece_type.instantiate()
 	icon = piece.icon
 	piece.queue_free()
