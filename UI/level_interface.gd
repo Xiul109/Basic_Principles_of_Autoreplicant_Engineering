@@ -4,13 +4,9 @@ extends Control
 var recovery_position : Vector2
 
 @onready var game_lost_interface: Control = $game_lost_interface
-@onready var button_lost_menu: Button = $game_lost_interface/button_menu
-@onready var button_retry: Button = $game_lost_interface/button_retry
-
 @onready var game_won_interface: Control = $game_won_interface
-@onready var button_next_level: Button = $game_won_interface/button_next_level
-@onready var button_won_menu: Button = $game_won_interface/button_menu
 
+signal exit_to_menu()
 
 @export var level : Level :
 	set(new_level):
@@ -29,12 +25,13 @@ var recovery_position : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("game_lost",game_lost)
-	button_retry.connect("pressed",_on_stop_button_pressed)
-	button_lost_menu.connect("pressed",go_to_menu)
+	game_lost_interface.button_retry.connect("pressed",_on_stop_button_pressed)
+	game_lost_interface.button_menu.connect("pressed",go_to_menu)
 	
 	SignalBus.connect("game_won",game_won)
-	button_next_level.connect("pressed",_on_stop_button_pressed)
-	button_won_menu.connect("pressed",go_to_menu)
+	game_won_interface.button_next_level.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_retry.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_menu.connect("pressed",go_to_menu)
 
 func game_lost(reason:String):
 	if level_state=="Building":
@@ -51,7 +48,7 @@ func game_won():
 
 
 func go_to_menu():
-	pass
+	exit_to_menu.emit()
 
 func alert(text:String):
 	alert_label.visible=true
