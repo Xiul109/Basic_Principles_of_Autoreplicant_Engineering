@@ -3,9 +3,13 @@ extends Node2D
 
 enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 
+const REPLICANT = preload("res://game_elements/replicant.tscn")
+
 @export var pieces : Array[Piece]
 @export var mode : Mode = Mode.EDITION : set=_mode_set
 @export var active_color := Color(.9, .3, .3)
+
+#@onready var pieces_node = $pieces
 
 var arrows : Array[ReplicaArrow]
 
@@ -13,9 +17,8 @@ func _process(delta):
 	for i in len(pieces):
 		$Line2D.points[i] = pieces[i].position
 	
-	if mode != Mode.DEFAULT:
-		$origin.position = _find_mean_point()
-		#_move_pieces(-_find_mean_point())
+	#if mode != Mode.DEFAULT:
+	$origin.position = _find_mean_point()
 	
 
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
@@ -29,7 +32,8 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 		return []
 	
 	for arrow in arrows:
-		var replica := duplicate(5)
+		var replica := duplicate(7)
+		#var replica := _create_replica()
 		replica.mode = rep_mode
 		replica.update_pos_from_arrow(arrow)
 		replica._delete_pieces_velocity()
@@ -38,6 +42,14 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 		replica.modulate = active_color
 	
 	return replicas
+
+#func _create_replica() -> Replicant:
+	#var replica = REPLICANT.instantiate()
+	#for piece in pieces:
+		#var piece_copy = load(piece.scene_file_path).instantiate()
+		#piece_copy.position = piece.position
+		#replica.add_child(piece_copy)
+	#return replica
 
 func are_there_null_arrows():
 	for arrow in arrows:
@@ -57,14 +69,18 @@ func _mode_set(new_mode: Mode):
 			placers[0].mode = mode
 	if mode == Mode.PREVIEW:
 		modulate = Color(.3, .3, .3, .4)
-	if mode != Mode.DEFAULT:
-		$origin.show()
-	else:
-		$origin.hide()
+	#if mode != Mode.DEFAULT:
+		#$origin.show()
+	#else:
+		#$origin.hide()
 
 func fill_arrows():
 	for piece in pieces:
 		arrows.append_array(piece.replica_arrows)
+
+func add_arrow(arrow):
+	if arrow is ReplicaArrow and arrow not in arrows:
+		arrows.append(arrow)
 
 func _on_child_entered_tree(node):
 	if node is Piece and node not in pieces:
@@ -73,10 +89,6 @@ func _on_child_entered_tree(node):
 		node.arrow_added.connect(add_arrow)
 		node.arrow_deleted.connect(func(arrow: ReplicaArrow): arrows.erase(arrow))
 	add_arrow(node)
-
-func add_arrow(arrow):
-	if arrow is ReplicaArrow and arrow not in arrows:
-		arrows.append(arrow)
 
 func _on_child_exiting_tree(node):
 	if node is Piece and node in pieces:
