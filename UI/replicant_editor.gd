@@ -26,7 +26,7 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	floating_piece.name = "piece_%d_%d"%[button_i, pieces_selector.available_pieces[button_i].count]
 	level.base_replicant.add_child(floating_piece)
 	level.update_previews()
-	if number_of_placed_pieces() > 0:
+	if number_of_placed_pieces() > 0 and pieces_selector.available_pieces[-1].count>0:
 		pieces_selector.buttons[-1].disabled = false
 
 
