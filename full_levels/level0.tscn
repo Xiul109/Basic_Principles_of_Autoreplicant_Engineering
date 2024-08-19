@@ -1,29 +1,31 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkmnskaabvmoa"]
 
-[ext_resource type="Script" path="res://game_elements/levels/level.gd" id="1_iup6q"]
-[ext_resource type="PackedScene" uid="uid://b1r4m8p1y8v0l" path="res://game_elements/levels/elements/building_zone.tscn" id="2_63p50"]
-[ext_resource type="PackedScene" uid="uid://cb4o78owk2qyg" path="res://game_elements/levels/elements/target_zone.tscn" id="3_5t66d"]
-[ext_resource type="Texture2D" uid="uid://dcle12sg6ann5" path="res://assets/zona_chunga.png" id="3_6dk6m"]
-[ext_resource type="Texture2D" uid="uid://cd6an61liepoc" path="res://icon.svg" id="4_s1q6x"]
+[ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_0up0k"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_u2v5e"]
+[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="3_k1lpa"]
+[ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="4_ycc6e"]
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_iup6q")
+[sub_resource type="Resource" id="Resource_gy12u"]
+script = ExtResource("2_u2v5e")
+piece_type = ExtResource("3_k1lpa")
+count = 2
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
+[node name="Level" instance=ExtResource("1_0up0k")]
+pieces = Array[ExtResource("2_u2v5e")]([SubResource("Resource_gy12u")])
+n_arrows = 1
 
-[node name="building_zone" parent="." instance=ExtResource("2_63p50")]
-modulate = Color(0.0705882, 1, 0.192157, 0.545098)
-position = Vector2(543.5, 193.5)
-scale = Vector2(13.2969, 5.54687)
-texture = ExtResource("3_6dk6m")
+[node name="CollisionPolygon2D" parent="building_area" index="1"]
+polygon = PackedVector2Array(304, 624, 700, 433, 681, 105, 1098, 246, 910, 592)
 
-[node name="sprite" parent="." instance=ExtResource("3_5t66d")]
-modulate = Color(1, 0.0980392, 1, 0.478431)
-position = Vector2(577, 798)
-scale = Vector2(9.64063, 5.73437)
-texture = ExtResource("4_s1q6x")
+[node name="static_obstacle" parent="." index="3" instance=ExtResource("4_ycc6e")]
 
-[connection signal="timeout" from="Timer" to="." method="check_if_pieces_in_zone"]
+[node name="CollisionPolygon2D" parent="static_obstacle" index="1"]
+polygon = PackedVector2Array(-142, 238, 130, 640, 1176, 633, 1571, 332, 1457, 844, -137, 797)
+
+[node name="BaseReplicant" parent="." index="4"]
+position = Vector2(635, 611)
+
+[editable path="building_area"]
+[editable path="building_area/PolygonView"]
+[editable path="static_obstacle"]
+[editable path="static_obstacle/PolygonView"]

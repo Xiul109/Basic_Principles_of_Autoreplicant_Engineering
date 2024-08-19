@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnh57qej5dk3w"]
+
+[ext_resource type="PackedScene" uid="uid://c3t66xpdrrig3" path="res://UI/level_interface.tscn" id="1_75evr"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="LevelInterface" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_75evr")]
+level = NodePath("Level")
+
+[editable path="LevelInterface"]

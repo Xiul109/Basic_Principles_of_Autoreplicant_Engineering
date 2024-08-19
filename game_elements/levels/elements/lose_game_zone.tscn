@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnafq0v3nf3dd"]
+[gd_scene load_steps=3 format=3 uid="uid://y6huvfyk425v"]
 
-[ext_resource type="Texture2D" uid="uid://dcle12sg6ann5" path="res://assets/zona_chunga.png" id="1_3f3ff"]
-[ext_resource type="Script" path="res://game_elements/levels/elements/lose_game_zone.gd" id="2_ubw3b"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/lose_game_zone.gd" id="1_54gxi"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_ln70l"]
 
-[node name="lose_game_zone" type="Sprite2D"]
-texture = ExtResource("1_3f3ff")
+[node name="lose_game_zone" type="Area2D"]
+script = ExtResource("1_54gxi")
 
-[node name="lose_game_area" type="Area2D" parent="."]
-script = ExtResource("2_ubw3b")
+[node name="PolygonView" parent="." instance=ExtResource("2_ln70l")]
 
-[connection signal="body_entered" from="lose_game_area" to="lose_game_area" method="_on_body_entered"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

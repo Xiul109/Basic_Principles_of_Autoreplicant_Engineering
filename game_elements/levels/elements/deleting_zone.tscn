@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw0tf08f2pcyq"]
+[gd_scene load_steps=3 format=3 uid="uid://drv51lr1ckoja"]
 
-[ext_resource type="Texture2D" uid="uid://cd6an61liepoc" path="res://icon.svg" id="1_jft5c"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_atsi2"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/deleting_zone.gd" id="2_upwgt"]
 
-[node name="deleting_zone" type="Sprite2D"]
-texture = ExtResource("1_jft5c")
-
-[node name="deleting_area" type="Area2D" parent="."]
+[node name="deleting_zone" type="Area2D"]
 script = ExtResource("2_upwgt")
 
-[connection signal="body_entered" from="deleting_area" to="deleting_area" method="_on_body_entered"]
+[node name="PolygonView" parent="." instance=ExtResource("2_atsi2")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

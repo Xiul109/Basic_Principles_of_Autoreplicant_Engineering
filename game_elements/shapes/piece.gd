@@ -9,8 +9,8 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_to_group("Piece")
-	shape.polygon = $collision.polygon
+	shape.collision = $collision
+	
 
 
 func _on_replica_arrows_child_entered_tree(node: Node):
@@ -21,3 +21,10 @@ func _on_replica_arrows_child_entered_tree(node: Node):
 func _on_replica_arrows_child_exiting_tree(node):
 	if node in replica_arrows:
 		replica_arrows.erase(node)
+
+
+func _on_placer_mode_changed(mode):
+	if mode in [Replicant.Mode.EDITION, Replicant.Mode.PLACED]:
+		freeze = true
+	else:
+		freeze = false

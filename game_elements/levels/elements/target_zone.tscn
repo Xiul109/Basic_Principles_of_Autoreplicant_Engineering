@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb4o78owk2qyg"]
+[gd_scene load_steps=3 format=3 uid="uid://dmeisesvoqy1o"]
 
-[ext_resource type="Texture2D" uid="uid://b1aw0g45l02lp" path="res://assets/arrowUp.png" id="1_gv3fi"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_fb34k"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/target_zone.gd" id="2_wc2l3"]
 
-[node name="target_zone" type="Sprite2D"]
-texture = ExtResource("1_gv3fi")
-
-[node name="target_area" type="Area2D" parent="."]
+[node name="target_zone" type="Area2D"]
 script = ExtResource("2_wc2l3")
 
-[connection signal="body_entered" from="target_area" to="target_area" method="_on_body_entered"]
+[node name="PolygonView" parent="." instance=ExtResource("2_fb34k")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

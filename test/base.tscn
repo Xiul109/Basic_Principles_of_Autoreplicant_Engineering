@@ -33,13 +33,11 @@ polygon = PackedVector2Array(-2, 0, 1152, -5, 1147, -655, 1080, -655, 1081, -147
 
 [node name="replicas" type="Node2D" parent="."]
 
-[node name="Replicant" parent="replicas" node_paths=PackedStringArray("pieces") instance=ExtResource("2_blyq8")]
+[node name="Replicant" parent="replicas" instance=ExtResource("2_blyq8")]
 position = Vector2(549, 494)
-pieces = [NodePath("square")]
 
-[node name="square" parent="replicas/Replicant" node_paths=PackedStringArray("replica_arrows") instance=ExtResource("3_radrf")]
+[node name="square" parent="replicas/Replicant" instance=ExtResource("3_radrf")]
 position = Vector2(-4, -55)
-replica_arrows = [NodePath("ReplicaArrow")]
 
 [node name="ReplicaArrow" parent="replicas/Replicant/square" instance=ExtResource("4_5uwn3")]
 position = Vector2(2, -47)

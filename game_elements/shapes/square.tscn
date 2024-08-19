@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cytu78s7047jn"]
+[gd_scene load_steps=5 format=3 uid="uid://cytu78s7047jn"]
 
-[ext_resource type="Script" path="res://game_elements/shapes/shape.gd" id="1_t6ded"]
+[ext_resource type="Script" path="res://game_elements/shapes/piece.gd" id="1_t6ded"]
 [ext_resource type="Texture2D" uid="uid://cws05hyjdqp3g" path="res://assets/shape_icons/square.png" id="2_geww2"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="3_j7bpx"]
+[ext_resource type="Script" path="res://UI/placer.gd" id="3_xfaux"]
 
-[node name="square" type="RigidBody2D"]
+[node name="square" type="RigidBody2D" groups=["piece"]]
+input_pickable = true
+freeze_mode = 1
 script = ExtResource("1_t6ded")
 icon = ExtResource("2_geww2")
 
@@ -12,7 +16,13 @@ polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
 
 [node name="replica_arrows" type="Node2D" parent="."]
 
-[node name="shape" type="Polygon2D" parent="."]
+[node name="shape" parent="." instance=ExtResource("3_j7bpx")]
 
+[node name="placer" type="Node" parent="."]
+script = ExtResource("3_xfaux")
+
+[connection signal="mouse_entered" from="." to="placer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="placer" method="_on_mouse_exited"]
 [connection signal="child_entered_tree" from="replica_arrows" to="." method="_on_replica_arrows_child_entered_tree"]
 [connection signal="child_exiting_tree" from="replica_arrows" to="." method="_on_replica_arrows_child_exiting_tree"]
+[connection signal="mode_changed" from="placer" to="." method="_on_placer_mode_changed"]

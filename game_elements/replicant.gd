@@ -1,27 +1,38 @@
 class_name Replicant
 extends Node2D
 
+enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
+
 @export var pieces : Array[Piece]
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var mode : Mode = Mode.EDITION : set=_mode_set
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 func replicate() -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
 	for piece in pieces:
 		for arrow in piece.replica_arrows:
-			var replica := duplicate()
+			var replica := duplicate(4)
 			replica.global_position = arrow.global_position
 			replica.global_rotation = \
-				piece.global_rotation + \
-				(arrow.target_position - arrow.position).angle() \
-				+ PI/2 # This is added, because the intuition is that up arrow is considered no rotation
+				piece.global_rotation + arrow.global_rotation
+				# This is added, because the intuition is that up arrow is considered no rotation
 
-			get_parent().add_child(replica)
 			replicas.append(replica)
 	return replicas
+
+func _mode_set(new_mode: Mode):
+	mode = new_mode
+	for child in get_children():
+		var placers = child.find_children("*", "Placer")
+		if len(placers) > 0:
+			placers[0].mode = mode
+
+
+func _on_child_entered_tree(node):
+	if node is Piece:
+		pieces.append(node)
+
+
+func _on_child_exiting_tree(node):
+	if node is Piece and node in pieces:
+		pieces.erase(node)

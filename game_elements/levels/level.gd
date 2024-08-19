@@ -4,16 +4,24 @@ extends Node2D
 @export var pieces : Array[LevelPieces]
 @export var n_arrows : int = 0
 
-@onready var building_area: Area2D = $building_zone/building_area
+@onready var building_area: Area2D = $building_area
+@onready var base_replicant : Replicant = $BaseReplicant
+@onready var timer = $Timer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var replicants_node = $replicants
+var active_replicants : Array[Replicant]
 
 
+func clean_replicants():
+	active_replicants.clear()
+	for repli in $replicants.get_children():
+		repli.queue_free()
 
-func check_if_pieces_in_zone():
-	print("Chequeo piezas")
-	var pieces_in_zone:=false
-	pieces_in_zone = building_area.check_all_pieces_in_area(pieces.size())
-	print("pieces in zone: "+str(pieces_in_zone))
+
+func _on_timer_timeout():
+	var new_replicants : Array[Replicant]
+	for repli in active_replicants:
+		new_replicants.append_array(repli.replicate())
+	for repli in new_replicants:
+		replicants_node.add_child(repli)
+	active_replicants = new_replicants

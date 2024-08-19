@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3t66xpdrrig3"]
+
+[ext_resource type="Script" path="res://UI/level_interface.gd" id="1_c3b3j"]
+[ext_resource type="PackedScene" uid="uid://cnif1ug0p3h4l" path="res://UI/replicant_editor.tscn" id="1_s4ugr"]
+[ext_resource type="PackedScene" uid="uid://bkmnskaabvmoa" path="res://full_levels/level0.tscn" id="3_qfml0"]
+
+[node name="LevelInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1283.0
+offset_bottom = 719.0
+mouse_filter = 1
+script = ExtResource("1_c3b3j")
+
+[node name="ReplicantEditor" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_s4ugr")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+level = NodePath("../Level")
+
+[node name="Level" parent="." instance=ExtResource("3_qfml0")]
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -50.0
+offset_right = -64.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Play"
+
+[node name="StopButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -50.0
+offset_right = -64.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Stop"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StopButton" to="." method="_on_stop_button_pressed"]

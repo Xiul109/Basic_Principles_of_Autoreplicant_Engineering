@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://pb72imfva3mt"]
+
+[ext_resource type="Script" path="res://game_elements/visual/polygon_view.gd" id="1_jk3a2"]
+
+[node name="PolygonView" type="Polygon2D"]
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_jk3a2")
+
+[node name="InnerShape" type="Polygon2D" parent="."]
+color = Color(0.973535, 0.973535, 0.973535, 1)
