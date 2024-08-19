@@ -6,33 +6,31 @@ enum Mode {DEFAULT, PLACED, EDITION, PREVIEW}
 @export var pieces : Array[Piece]
 @export var mode : Mode = Mode.EDITION : set=_mode_set
 
+var arrows : Array[ReplicaArrow]
 
-func replicate() -> Array[Replicant]:
+	
+func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
-	var available_arrows:=0
-	for piece in pieces:
-		print("Tengo estas pieas: "+str(pieces.size()))
-		if is_instance_valid(piece):		#!piece.is_queued_for_deletion():
-			print("Esta es valida: "+str(piece))
-			for arrow in piece.replica_arrows:
-				print("Tenemos flecha")
-				available_arrows+=1
-				var replica := duplicate(4)
-				replica.global_position = arrow.global_position
-				replica.global_rotation = \
-					piece.global_rotation + arrow.global_rotation
-					# This is added, because the intuition is that up arrow is considered no rotation
-
-				replicas.append(replica)
-		else:
-			print("esta no es valida: "+str(piece))
-
+	#for piece in pieces:
+		#if not is_instance_valid(piece):		#!piece.is_queued_for_deletion():
+			#continue
 		
-	if available_arrows==0:
+	if len(arrows)==0:
 		print("Ninguna flecha en la iteracion")
 		SignalBus.game_lost.emit("no_pieces")
 	
+	for arrow in arrows:
+		var replica := duplicate(5)
+		replica.mode = rep_mode
+		replica.update_pos_from_arrow(arrow)
+		replica.fill_arrows()
+		replicas.append(replica)
+	
 	return replicas
+
+func update_pos_from_arrow(arrow: ReplicaArrow):
+	global_position = arrow.global_position
+	global_rotation = arrow.global_rotation
 
 func _mode_set(new_mode: Mode):
 	mode = new_mode
@@ -40,13 +38,27 @@ func _mode_set(new_mode: Mode):
 		var placers = child.find_children("*", "Placer")
 		if len(placers) > 0:
 			placers[0].mode = mode
+	if mode == Mode.PREVIEW:
+		modulate = Color(.3, .3, .3, .4)
 
+func fill_arrows():
+	for piece in pieces:
+		arrows.append_array(piece.replica_arrows)
 
 func _on_child_entered_tree(node):
-	if node is Piece:
+	if node is Piece and node not in pieces:
 		pieces.append(node)
+		node.arrow_added.connect(add_arrow)
+		node.arrow_deleted.connect(func(arrow: ReplicaArrow): arrows.erase(arrow))
+	add_arrow(node)
 
+func add_arrow(arrow):
+	if arrow is ReplicaArrow and arrow not in arrows:
+		arrows.append(arrow)
 
 func _on_child_exiting_tree(node):
 	if node is Piece and node in pieces:
 		pieces.erase(node)
+	
+	if node is ReplicaArrow:
+		arrows.erase(node)

@@ -15,9 +15,12 @@ var recovery_position : Vector2
 @export var level : Level :
 	set(new_level):
 		level = new_level
-		#add_child(level)
+		level.name = "level"
+		add_child(level)
+		move_child(level, 0)
 		if replicant_editor != null:
 			replicant_editor.level = level
+
 
 @export_enum("Building","Replicating") var level_state="Building"
 
@@ -33,10 +36,6 @@ func _ready():
 	button_next_level.connect("pressed",_on_stop_button_pressed)
 	button_won_menu.connect("pressed",go_to_menu)
 
-
-
-
-
 func game_lost(reason:String):
 	if level_state=="Building":
 		return
@@ -51,16 +50,15 @@ func game_won():
 	level.timer.stop()
 
 
-
 func go_to_menu():
 	pass
-
 
 func alert(text:String):
 	alert_label.visible=true
 	alert_label.text=text
 	await get_tree().create_timer(5).timeout
 	alert_label.visible=false
+
 
 func _on_play_button_pressed():
 	if level == null:
@@ -73,8 +71,10 @@ func _on_play_button_pressed():
 	level_state="Replicating"
 	# Setting copy 
 	level.base_replicant.mode = Replicant.Mode.DEFAULT
-	var copy_reply = level.base_replicant.duplicate(4)
+	print("aqui")
+	var copy_reply = level.base_replicant.duplicate(5)
 	level.replicants_node.add_child(copy_reply)
+	copy_reply.fill_arrows()
 	level.active_replicants.append(copy_reply)
 	# Setting recovery copy
 	level.base_replicant.mode = Replicant.Mode.PLACED
@@ -85,9 +85,10 @@ func _on_play_button_pressed():
 	$PlayButton.hide()
 	$StopButton.show()
 	level.building_area.hide()
+	level.clean_previews()
+	level.playing = true
 	# Starting timer
 	level.timer.start()
-
 
 
 
@@ -107,3 +108,5 @@ func _on_stop_button_pressed():
 	$PlayButton.show()
 	$StopButton.hide()
 	level.building_area.show()
+	level.update_previews()
+	level.playing = false

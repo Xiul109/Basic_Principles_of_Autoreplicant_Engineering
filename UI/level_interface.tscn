@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3t66xpdrrig3"]
+[gd_scene load_steps=5 format=3 uid="uid://c3t66xpdrrig3"]
 
 [ext_resource type="Script" path="res://UI/level_interface.gd" id="1_c3b3j"]
 [ext_resource type="PackedScene" uid="uid://cnif1ug0p3h4l" path="res://UI/replicant_editor.tscn" id="1_s4ugr"]
-[ext_resource type="PackedScene" uid="uid://bkmnskaabvmoa" path="res://full_levels/level0.tscn" id="3_qfml0"]
 [ext_resource type="PackedScene" uid="uid://de1ch156rclga" path="res://UI/game_lost_interface.tscn" id="4_f2ata"]
 [ext_resource type="PackedScene" uid="uid://baibn74emvb8s" path="res://UI/game_won_interface.tscn" id="5_twmdp"]
 
@@ -14,16 +13,13 @@ offset_bottom = 719.0
 mouse_filter = 1
 script = ExtResource("1_c3b3j")
 
-[node name="ReplicantEditor" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_s4ugr")]
+[node name="ReplicantEditor" parent="." instance=ExtResource("1_s4ugr")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-level = NodePath("../Level")
-
-[node name="Level" parent="." instance=ExtResource("3_qfml0")]
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 1

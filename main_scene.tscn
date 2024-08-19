@@ -1,13 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnh57qej5dk3w"]
+[gd_scene load_steps=4 format=3 uid="uid://cnh57qej5dk3w"]
 
-[ext_resource type="PackedScene" uid="uid://c3t66xpdrrig3" path="res://UI/level_interface.tscn" id="1_75evr"]
+[ext_resource type="Script" path="res://main_scene.gd" id="1_docgf"]
+[ext_resource type="PackedScene" uid="uid://bi2nqbknnkpcr" path="res://UI/level_selector.tscn" id="2_f3enm"]
+[ext_resource type="PackedScene" uid="uid://bkmnskaabvmoa" path="res://full_levels/level0.tscn" id="3_n7cql"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_docgf")
 
-[node name="LevelInterface" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_75evr")]
-level = NodePath("Level")
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[editable path="LevelInterface"]
+[node name="LevelSelector" parent="CenterContainer" instance=ExtResource("2_f3enm")]
+layout_mode = 2
+levels = Array[PackedScene]([ExtResource("3_n7cql")])
+
+[connection signal="level_selected" from="CenterContainer/LevelSelector" to="." method="_on_level_selector_level_selected"]
