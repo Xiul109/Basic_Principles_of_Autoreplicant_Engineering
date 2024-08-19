@@ -12,6 +12,6 @@ func _ready():
 func _on_level_selector_level_selected(level_scene: PackedScene):
 	level_selector.hide()
 	var level_interface = LEVEL_INTERFACE.instantiate()
+	add_child(level_interface)
 	var level = level_scene.instantiate()
 	level_interface.level = level
-	add_child(level_interface)

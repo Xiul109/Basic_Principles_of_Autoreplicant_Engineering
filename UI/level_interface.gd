@@ -6,13 +6,11 @@ var recovery_position : Vector2
 @export var level : Level :
 	set(new_level):
 		level = new_level
+		level.name = "level"
 		add_child(level)
+		move_child(level, 0)
 		if replicant_editor != null:
 			replicant_editor.level = level
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 
 func _on_play_button_pressed():
@@ -36,8 +34,6 @@ func _on_play_button_pressed():
 	level.building_area.hide()
 	# Starting timer
 	level.timer.start()
-
-
 
 
 func _on_stop_button_pressed():
