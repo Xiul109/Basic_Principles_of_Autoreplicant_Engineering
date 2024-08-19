@@ -20,10 +20,13 @@ func are_all_pieces_placed() -> bool:
 
 func _set_total_pieces(pieces : Array[LevelPieces]):
 	total_pieces = pieces
-	available_pieces = total_pieces.duplicate(true)
+	#available_pieces = total_pieces.duplicate(true)
+	available_pieces.clear()
+	for piece in total_pieces:
+		available_pieces.append(piece.duplicate())
 	buttons = []
-	for i in len(pieces):
-		var piece = pieces[i]
+	for i in len(available_pieces):
+		var piece = available_pieces[i]
 		var button = PieceButton.instantiate()
 		button.level_pieces = piece
 		button.piece_pressed.connect(_piece_button_pressed)

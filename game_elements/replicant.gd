@@ -74,7 +74,9 @@ func add_arrow(arrow):
 
 func _on_child_exiting_tree(node):
 	if node is Piece and node in pieces:
-		pieces.erase(node)
+		var i = pieces.find(node)
+		pieces.pop_at(i)
+		$Line2D.remove_point(i)
 	
 	if node is ReplicaArrow:
 		arrows.erase(node)
