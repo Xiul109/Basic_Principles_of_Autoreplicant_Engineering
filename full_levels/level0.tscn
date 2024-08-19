@@ -26,4 +26,6 @@ polygon = PackedVector2Array(-142, 238, 130, 640, 1176, 633, 1571, 332, 1457, 84
 position = Vector2(635, 611)
 
 [editable path="building_area"]
+[editable path="building_area/PolygonView"]
 [editable path="static_obstacle"]
+[editable path="static_obstacle/PolygonView"]

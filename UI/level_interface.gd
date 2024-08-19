@@ -20,28 +20,36 @@ func _on_play_button_pressed():
 		return
 	elif not replicant_editor.pieces_selector.are_all_pieces_placed():
 		return
-	
+	# Setting copy 
 	level.base_replicant.mode = Replicant.Mode.DEFAULT
 	var copy_reply = level.base_replicant.duplicate(4)
 	level.replicants_node.add_child(copy_reply)
 	level.active_replicants.append(copy_reply)
+	# Setting recovery copy
 	level.base_replicant.mode = Replicant.Mode.PLACED
 	level.base_replicant.hide()
 	level.base_replicant.set_physics_process(false)
 	recovery_position = level.base_replicant.position
 	level.base_replicant.position = Vector2.INF
-	
-	level.timer.start()
+	# Hiding unuseful UI
 	$PlayButton.hide()
 	$StopButton.show()
+	level.building_area.hide()
+	# Starting timer
+	level.timer.start()
+
+
 
 
 func _on_stop_button_pressed():
+	# Stoping timer
 	level.timer.stop()
+	# Cleaning and recovering replicant
 	level.clean_replicants()
 	level.base_replicant.show()
 	level.base_replicant.set_physics_process(true)
 	level.base_replicant.position = recovery_position
+	# Showing again UI
 	$PlayButton.show()
 	$StopButton.hide()
-	
+	level.building_area.show()
