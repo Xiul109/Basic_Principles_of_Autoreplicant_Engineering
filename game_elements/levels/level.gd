@@ -11,6 +11,30 @@ extends Node2D
 @onready var replicants_node = $replicants
 var active_replicants : Array[Replicant]
 
+var previews : Array[Replicant]
+
+var playing := false
+
+func _process(_delta):
+	if playing:
+		return
+	# This approach is very unefficient but works by the moment
+	update_previews()
+
+func update_previews():
+	clean_previews()
+	
+	for arrow in base_replicant.arrows:
+		var preview = base_replicant.duplicate(4)
+		add_child(preview)
+		preview.mode = Replicant.Mode.PREVIEW
+		preview.update_pos_from_arrow(arrow)
+		previews.append(preview)
+
+func clean_previews():
+	for pre in previews:
+		pre.queue_free()
+	previews.clear()
 
 func clean_replicants():
 	active_replicants.clear()

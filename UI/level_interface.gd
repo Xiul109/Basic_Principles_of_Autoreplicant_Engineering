@@ -32,8 +32,11 @@ func _on_play_button_pressed():
 	$PlayButton.hide()
 	$StopButton.show()
 	level.building_area.hide()
+	level.clean_previews()
+	level.playing = true
 	# Starting timer
 	level.timer.start()
+
 
 
 func _on_stop_button_pressed():
@@ -47,3 +50,5 @@ func _on_stop_button_pressed():
 	$PlayButton.show()
 	$StopButton.hide()
 	level.building_area.show()
+	level.update_previews()
+	level.playing = false

@@ -11,14 +11,13 @@ offset_bottom = 719.0
 mouse_filter = 1
 script = ExtResource("1_c3b3j")
 
-[node name="ReplicantEditor" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_s4ugr")]
+[node name="ReplicantEditor" parent="." instance=ExtResource("1_s4ugr")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-level = NodePath("")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 1

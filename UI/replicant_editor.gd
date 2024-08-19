@@ -14,6 +14,7 @@ const REPLICA_ARROW = preload("res://game_elements/replica_arrow.tscn")
 func _ready():
 	update_level()
 
+
 func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	var floating_piece = piece.instantiate()
 	#floating_piece.global_position = get_global_mouse_position()
@@ -24,9 +25,13 @@ func _on_piece_selector_piece_selected(piece: PackedScene, button_i : int):
 	# The name is mandatory to avoid problems on replication
 	floating_piece.name = "piece_%d_%d"%[button_i, pieces_selector.available_pieces[button_i].count]
 	level.base_replicant.add_child(floating_piece)
+	level.update_previews()
 
 
 func _on_piece_deleted(i: int):
+	# Manage deletion of previews
+	level.update_previews()
+	# Manage remaining pieces
 	pieces_selector.available_pieces[i].count += 1
 	pieces_selector.buttons[i].update_button()
 
