@@ -12,6 +12,8 @@ var arrows : Array[ReplicaArrow]
 func _process(delta):
 	for i in len(pieces):
 		$Line2D.points[i] = pieces[i].position
+	if mode != Mode.DEFAULT:
+		_update_positioning()
 
 func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	var replicas : Array[Replicant] = []
@@ -80,3 +82,15 @@ func _on_child_exiting_tree(node):
 	
 	if node is ReplicaArrow:
 		arrows.erase(node)
+
+func _update_positioning():
+	if len(pieces) <= 0:
+		return
+	
+	var mean_point := Vector2.ZERO
+	for piece in pieces:
+		mean_point += piece.position
+	mean_point /= len(pieces)
+	for piece in pieces:
+		piece.position -= mean_point
+	position += mean_point
