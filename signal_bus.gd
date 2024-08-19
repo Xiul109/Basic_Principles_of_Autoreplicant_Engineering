@@ -10,3 +10,7 @@ signal game_won
 
 signal activate_delete_areas(value)
 #emited: level_interface
+
+
+signal set_current_level(level_number)
+#emited: start_level_button

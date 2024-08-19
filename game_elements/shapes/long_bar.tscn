@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/placer.gd" id="4_myx8a"]
 
 [node name="square" type="RigidBody2D" groups=["piece"]]
+position = Vector2(0, -16)
 input_pickable = true
 freeze_mode = 1
 script = ExtResource("1_s42ga")

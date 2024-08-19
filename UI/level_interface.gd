@@ -27,6 +27,8 @@ var recovery_position : Vector2
 
 @onready var level_selector: Control = get_node("../CenterContainer/LevelSelector")
 
+var game_finished:=false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("game_lost",game_lost)
@@ -40,15 +42,19 @@ func _ready():
 func game_lost(reason:String):
 	if level_state=="Building":
 		return
-	game_lost_interface.visible=true
-	level.timer.stop()
+	if not game_finished:
+		game_finished=true
+		game_lost_interface.visible=true
+		level.timer.stop()
 
 
 func game_won():
 	if level_state=="Building":
 		return
-	game_won_interface.visible=true
-	level.timer.stop()
+	if not game_finished:
+		game_finished=true
+		game_won_interface.visible=true
+		level.timer.stop()
 
 func next_level():
 	var r
