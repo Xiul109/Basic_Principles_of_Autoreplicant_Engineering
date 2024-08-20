@@ -21,7 +21,6 @@ lvel_instructions = "A wall ! Our worst enemy after gravity !"
 position = Vector2(864, 33)
 
 [node name="CollisionPolygon2D" parent="target_zone" index="1"]
-position = Vector2(-24, 439)
 polygon = PackedVector2Array(-88, 31, -88, 143, 376, 143, 372, 32)
 
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
@@ -47,6 +46,23 @@ position = Vector2(600, 392)
 
 [node name="CollisionPolygon2D" parent="static_obstacle2" index="1"]
 polygon = PackedVector2Array(-152, -264, 104, -264, 104, 232, -152, 232)
+
+[node name="Label" type="Label" parent="." index="8"]
+offset_left = 296.0
+offset_top = 80.0
+offset_right = 859.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 30
+text = "A wall ! Our worst enemy after gravity !"
+
+[node name="Label2" type="Label" parent="." index="9"]
+offset_left = 752.0
+offset_top = 392.0
+offset_right = 1184.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 30
+text = "You know you can rotate the pieces and arrow using Q and E, right?"
+autowrap_mode = 2
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]

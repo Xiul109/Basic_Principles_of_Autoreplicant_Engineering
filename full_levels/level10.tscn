@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_3v7u8"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_ibo2b"]
-[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="3_ovlr2"]
+[ext_resource type="PackedScene" uid="uid://dsc23ry34ende" path="res://game_elements/shapes/long_bar.tscn" id="3_btlfm"]
 [ext_resource type="PackedScene" uid="uid://b13y5ulk3wrnw" path="res://game_elements/shapes/triangle.tscn" id="4_dgnuf"]
 [ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_lclqc"]
 [ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="6_hv4ho"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_gy12u"]
 script = ExtResource("2_ibo2b")
-piece_type = ExtResource("3_ovlr2")
+piece_type = ExtResource("3_btlfm")
 count = 1
 
 [sub_resource type="Resource" id="Resource_n28g5"]

@@ -106,6 +106,15 @@ position = Vector2(704, 392)
 [node name="CollisionPolygon2D" parent="impulse_zone3" index="1"]
 polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
 
+[node name="Label" type="Label" parent="." index="16"]
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 1186.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 30
+text = "You already know everything you need to become a true autoreplicants engineer. 
+Prove yourself completing the next levels."
+
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]
 [editable path="building_area"]

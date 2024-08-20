@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_n28g5"]
 script = ExtResource("2_1yjvd")
 piece_type = ExtResource("3_sethp")
-count = 3
+count = 2
 
 [node name="Level" instance=ExtResource("1_mnclu")]
 pieces = Array[ExtResource("2_1yjvd")]([SubResource("Resource_n28g5")])

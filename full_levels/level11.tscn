@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1lsqy67sm5ru"]
+[gd_scene load_steps=11 format=3 uid="uid://c1lsqy67sm5ru"]
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_i84b8"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_64sux"]
-[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="3_1lok6"]
 [ext_resource type="PackedScene" uid="uid://b13y5ulk3wrnw" path="res://game_elements/shapes/triangle.tscn" id="4_7ncy2"]
 [ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_kt0d7"]
 [ext_resource type="PackedScene" uid="uid://dys5j8wks35vc" path="res://game_elements/levels/elements/building_zone.tscn" id="6_83txw"]
@@ -11,18 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="8_x5lek"]
 [ext_resource type="PackedScene" uid="uid://biltu22qcr2r3" path="res://game_elements/levels/elements/impulse_zone.tscn" id="9_6n6ce"]
 
-[sub_resource type="Resource" id="Resource_gy12u"]
-script = ExtResource("2_64sux")
-piece_type = ExtResource("3_1lok6")
-count = 0
-
 [sub_resource type="Resource" id="Resource_n28g5"]
 script = ExtResource("2_64sux")
 piece_type = ExtResource("4_7ncy2")
 count = 2
 
 [node name="Level" instance=ExtResource("1_i84b8")]
-pieces = Array[ExtResource("2_64sux")]([SubResource("Resource_gy12u"), SubResource("Resource_n28g5")])
+pieces = Array[ExtResource("2_64sux")]([SubResource("Resource_n28g5")])
 n_arrows = 1
 lvel_instructions = "Look at that! A yellow thing, maybe it is usefull."
 

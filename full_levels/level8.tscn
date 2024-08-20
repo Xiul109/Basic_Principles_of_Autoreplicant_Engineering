@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2lftff0wtgcx"]
+[gd_scene load_steps=11 format=3 uid="uid://b2lftff0wtgcx"]
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_a8nhe"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_yc1wk"]
-[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="4_cg5y3"]
 [ext_resource type="PackedScene" uid="uid://dsc23ry34ende" path="res://game_elements/shapes/long_bar.tscn" id="4_ub2hr"]
 [ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_b361u"]
 [ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="6_mrybx"]
@@ -16,13 +15,8 @@ script = ExtResource("2_yc1wk")
 piece_type = ExtResource("4_ub2hr")
 count = 2
 
-[sub_resource type="Resource" id="Resource_n28g5"]
-script = ExtResource("2_yc1wk")
-piece_type = ExtResource("4_cg5y3")
-count = 0
-
 [node name="Level" instance=ExtResource("1_a8nhe")]
-pieces = Array[ExtResource("2_yc1wk")]([SubResource("Resource_gy12u"), SubResource("Resource_n28g5")])
+pieces = Array[ExtResource("2_yc1wk")]([SubResource("Resource_gy12u")])
 n_arrows = 1
 lvel_instructions = "Look at that! A yellow thing, maybe it is usefull."
 
@@ -44,7 +38,7 @@ polygon = PackedVector2Array(-224, 328, -224, 408, 72, 408, 72, 328)
 polygon = PackedVector2Array(-204, -11, 96, 635, 1226, 643, 1412, -31, 1776, 40, 1720, 1080, -496, 1072, -496, 96)
 
 [node name="BaseReplicant" parent="." index="5"]
-position = Vector2(635, 611)
+position = Vector2(1096, 184)
 
 [node name="lose_game_zone" parent="." index="6" instance=ExtResource("7_i57ii")]
 position = Vector2(46, 967)
@@ -105,6 +99,24 @@ position = Vector2(656, 288)
 
 [node name="CollisionPolygon2D" parent="impulse_zone" index="1"]
 polygon = PackedVector2Array(-16, -32, -16, 16, 48, 16, 48, -32, 48, -72, 88, -72, 16, -120, -56, -72, -16, -72)
+
+[node name="Label" type="Label" parent="." index="15"]
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 272.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 30
+text = "If any pice reaches a purple your task is considered a failure."
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="." index="16"]
+offset_left = 624.0
+offset_top = 320.0
+offset_right = 944.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 30
+text = "Hmmm, I have not authorized these yellow areas."
+autowrap_mode = 2
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]

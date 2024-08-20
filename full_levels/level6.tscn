@@ -59,6 +59,14 @@ position = Vector2(920, 328)
 [node name="CollisionPolygon2D" parent="static_obstacle2" index="1"]
 polygon = PackedVector2Array(384, -88, 360, 48, -232, 56, -240, -128)
 
+[node name="Label" type="Label" parent="." index="9"]
+offset_left = 480.0
+offset_top = 536.0
+offset_right = 1136.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 30
+text = "Red areas destroy your replicants, be careful!"
+
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]
 [editable path="building_area"]

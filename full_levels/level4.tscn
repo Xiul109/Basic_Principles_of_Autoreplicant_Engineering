@@ -50,6 +50,15 @@ position = Vector2(600, 392)
 [node name="CollisionPolygon2D" parent="static_obstacle2" index="1"]
 polygon = PackedVector2Array(-344, -264, 720, -264, 720, -208, -344, -208)
 
+[node name="Label" type="Label" parent="." index="8"]
+offset_left = 760.0
+offset_top = 480.0
+offset_right = 1264.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 30
+text = "Advanced lesson number 1: Autoreplicants can replicate through the wall."
+autowrap_mode = 2
+
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]
 [editable path="building_area"]
