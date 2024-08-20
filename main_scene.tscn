@@ -30,11 +30,23 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LevelSelector" parent="CenterContainer" instance=ExtResource("2_f3enm")]
 layout_mode = 2
 levels = Array[PackedScene]([ExtResource("3_n7cql"), ExtResource("4_h5abr"), ExtResource("5_cek7w"), ExtResource("6_f5do7"), ExtResource("7_8nypc"), ExtResource("5_dndso"), ExtResource("9_tvx64"), ExtResource("8_4yq1m"), ExtResource("11_efg3o"), ExtResource("12_66cbb")])
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 1278.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 81
+text = "Basic Principles of Autoreplicant Engineering"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="level_selected" from="CenterContainer/LevelSelector" to="." method="_on_level_selector_level_selected"]
