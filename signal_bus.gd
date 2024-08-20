@@ -14,3 +14,7 @@ signal activate_delete_areas(value)
 
 signal set_current_level(level_number)
 #emited: start_level_button
+
+
+signal activate_impulse_areas(value)
+#emited: level_interface

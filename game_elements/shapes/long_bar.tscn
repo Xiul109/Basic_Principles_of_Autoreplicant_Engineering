@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="3_51ysd"]
 [ext_resource type="Script" path="res://UI/placer.gd" id="4_myx8a"]
 
-[node name="square" type="RigidBody2D" groups=["piece"]]
+[node name="long_bar" type="RigidBody2D" groups=["piece"]]
 position = Vector2(0, -16)
 input_pickable = true
 freeze_mode = 1

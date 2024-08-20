@@ -65,6 +65,7 @@ func _on_play_button_pressed():
 		return
 		
 	SignalBus.activate_delete_areas.emit(true)
+	SignalBus.activate_impulse_areas.emit(true)
 	level_state="Replicating"
 	# Setting copy 
 	level.base_replicant.mode = Replicant.Mode.DEFAULT
@@ -93,6 +94,7 @@ func _on_play_button_pressed():
 func _on_stop_button_pressed():
 	level_state="Building"
 	SignalBus.activate_delete_areas.emit(false)
+	SignalBus.activate_impulse_areas.emit(false)
 	game_lost_interface.visible=false
 	game_won_interface.visible=false
 	

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://biltu22qcr2r3"]
+
+[ext_resource type="Script" path="res://game_elements/levels/elements/impulse_zone.gd" id="1_btypk"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="2_n35k2"]
+
+[node name="impulse_zone" type="Area2D"]
+script = ExtResource("1_btypk")
+
+[node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_n35k2")]
+color = Color(0.987034, 0.991528, 0.999797, 1)
+collision = NodePath("../CollisionPolygon2D")
+
+[node name="InnerShape" parent="PolygonView" index="0"]
+color = Color(0.992157, 0.941176, 0, 0.552941)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="PolygonView"]

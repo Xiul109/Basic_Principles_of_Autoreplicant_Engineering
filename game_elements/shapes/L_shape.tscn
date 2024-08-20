@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc7t637r7spky"]
+
+[ext_resource type="Script" path="res://game_elements/shapes/piece.gd" id="1_0exm3"]
+[ext_resource type="Texture2D" uid="uid://cws05hyjdqp3g" path="res://assets/shape_icons/square.png" id="2_bkbla"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="3_7r0eg"]
+[ext_resource type="Script" path="res://UI/placer.gd" id="4_d5ue8"]
+
+[node name="L_shape" type="RigidBody2D" groups=["piece"]]
+position = Vector2(0, -16)
+input_pickable = true
+freeze_mode = 1
+script = ExtResource("1_0exm3")
+icon = ExtResource("2_bkbla")
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32, -16, -32, -112, 0, -112, 0, -16, 64, -16, 64, 16, -32, 16)
+
+[node name="replica_arrows" type="Node2D" parent="."]
+
+[node name="shape" parent="." instance=ExtResource("3_7r0eg")]
+
+[node name="placer" type="Node" parent="."]
+script = ExtResource("4_d5ue8")
+
+[connection signal="mouse_entered" from="." to="placer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="placer" method="_on_mouse_exited"]
+[connection signal="child_entered_tree" from="replica_arrows" to="." method="_on_replica_arrows_child_entered_tree"]
+[connection signal="child_exiting_tree" from="replica_arrows" to="." method="_on_replica_arrows_child_exiting_tree"]
+[connection signal="mode_changed" from="placer" to="." method="_on_placer_mode_changed"]

@@ -25,10 +25,9 @@ n_arrows = 1
 lvel_instructions = "You have to reach that shiny zone. Maybe using the arrow."
 
 [node name="target_zone" parent="." index="1" instance=ExtResource("4_534pn")]
-position = Vector2(864, 33)
+position = Vector2(888, 80)
 
 [node name="CollisionPolygon2D" parent="target_zone" index="1"]
-position = Vector2(-24, 383)
 polygon = PackedVector2Array(201, 31, 200, 143, 376, 143, 376, 32)
 
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
@@ -48,18 +47,17 @@ position = Vector2(46, 967)
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
 polygon = PackedVector2Array(1864, 221, -630, 269, -746, -195, -356, 43, 1482, 3, 1878, -597)
 
-[node name="static_obstacle2" parent="." index="7" instance=ExtResource("5_pnqgs")]
-position = Vector2(928, 304)
+[node name="deleting_zone" parent="." index="7" instance=ExtResource("8_1c5y1")]
+position = Vector2(416, 672)
+
+[node name="CollisionPolygon2D" parent="deleting_zone" index="1"]
+polygon = PackedVector2Array(576, -8, 592, 128, 16, 136, -24, 0)
+
+[node name="static_obstacle2" parent="." index="8" instance=ExtResource("5_pnqgs")]
+position = Vector2(920, 328)
 
 [node name="CollisionPolygon2D" parent="static_obstacle2" index="1"]
-position = Vector2(-40, -288)
 polygon = PackedVector2Array(384, -88, 360, 48, -232, 56, -240, -128)
-
-[node name="deleting_zone" parent="static_obstacle2" index="2" instance=ExtResource("8_1c5y1")]
-position = Vector2(-504, 344)
-
-[node name="CollisionPolygon2D" parent="static_obstacle2/deleting_zone" index="1"]
-polygon = PackedVector2Array(576, -8, 592, 128, 16, 136, -24, 0)
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]
@@ -69,7 +67,7 @@ polygon = PackedVector2Array(576, -8, 592, 128, 16, 136, -24, 0)
 [editable path="static_obstacle/PolygonView"]
 [editable path="lose_game_zone"]
 [editable path="lose_game_zone/PolygonView"]
+[editable path="deleting_zone"]
+[editable path="deleting_zone/PolygonView"]
 [editable path="static_obstacle2"]
 [editable path="static_obstacle2/PolygonView"]
-[editable path="static_obstacle2/deleting_zone"]
-[editable path="static_obstacle2/deleting_zone/PolygonView"]

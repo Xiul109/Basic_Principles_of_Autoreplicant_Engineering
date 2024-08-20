@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6l4bfjagvvjq"]
+
+[ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_itscc"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_ywh4i"]
+[ext_resource type="PackedScene" uid="uid://b13y5ulk3wrnw" path="res://game_elements/shapes/triangle.tscn" id="3_wc3m0"]
+[ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="4_534pn"]
+[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="4_m512o"]
+[ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="5_pnqgs"]
+[ext_resource type="PackedScene" uid="uid://y6huvfyk425v" path="res://game_elements/levels/elements/lose_game_zone.tscn" id="6_r6out"]
+[ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="8_1c5y1"]
+
+[sub_resource type="Resource" id="Resource_gy12u"]
+script = ExtResource("2_ywh4i")
+piece_type = ExtResource("3_wc3m0")
+count = 3
+
+[sub_resource type="Resource" id="Resource_uvf8e"]
+script = ExtResource("2_ywh4i")
+piece_type = ExtResource("4_m512o")
+count = 0
+
+[node name="Level" instance=ExtResource("1_itscc")]
+pieces = Array[ExtResource("2_ywh4i")]([SubResource("Resource_gy12u"), SubResource("Resource_uvf8e")])
+n_arrows = 1
+lvel_instructions = "A new shape, it does not look too stable."
+
+[node name="target_zone" parent="." index="1" instance=ExtResource("4_534pn")]
+position = Vector2(648, 16)
+
+[node name="CollisionPolygon2D" parent="target_zone" index="1"]
+polygon = PackedVector2Array(201, 31, 200, 143, 376, 143, 376, 32)
+
+[node name="target_zone2" parent="." index="2" instance=ExtResource("4_534pn")]
+position = Vector2(80, 16)
+
+[node name="CollisionPolygon2D" parent="target_zone2" index="1"]
+polygon = PackedVector2Array(201, 31, 200, 143, 376, 143, 376, 32)
+
+[node name="building_area" parent="." index="3"]
+position = Vector2(460, 5)
+
+[node name="CollisionPolygon2D" parent="building_area" index="1"]
+polygon = PackedVector2Array(92, 619, 92, 507, 380, 507, 380, 619)
+
+[node name="static_obstacle" parent="." index="5" instance=ExtResource("5_pnqgs")]
+
+[node name="CollisionPolygon2D" parent="static_obstacle" index="1"]
+polygon = PackedVector2Array(-204, -11, 96, 635, 368, 632, 1032, 624, 1226, 643, 1412, -31, 1454, 839, -168, 861)
+
+[node name="BaseReplicant" parent="." index="6"]
+position = Vector2(635, 611)
+
+[node name="lose_game_zone" parent="." index="7" instance=ExtResource("6_r6out")]
+position = Vector2(46, 967)
+
+[node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
+polygon = PackedVector2Array(1864, 221, -630, 269, -746, -195, -356, 43, 1482, 3, 1878, -597)
+
+[node name="deleting_zone" parent="." index="8" instance=ExtResource("8_1c5y1")]
+position = Vector2(776, 368)
+
+[node name="CollisionPolygon2D" parent="deleting_zone" index="1"]
+polygon = PackedVector2Array(400, -112, 400, 232, 176, 232, 176, -112)
+
+[node name="deleting_zone2" parent="." index="9" instance=ExtResource("8_1c5y1")]
+position = Vector2(24, 368)
+
+[node name="CollisionPolygon2D" parent="deleting_zone2" index="1"]
+polygon = PackedVector2Array(400, -112, 400, 232, 176, 232, 176, -112)
+
+[editable path="target_zone"]
+[editable path="target_zone/PolygonView"]
+[editable path="target_zone2"]
+[editable path="target_zone2/PolygonView"]
+[editable path="building_area"]
+[editable path="building_area/PolygonView"]
+[editable path="static_obstacle"]
+[editable path="static_obstacle/PolygonView"]
+[editable path="lose_game_zone"]
+[editable path="lose_game_zone/PolygonView"]
+[editable path="deleting_zone"]
+[editable path="deleting_zone/PolygonView"]
+[editable path="deleting_zone2"]
+[editable path="deleting_zone2/PolygonView"]
