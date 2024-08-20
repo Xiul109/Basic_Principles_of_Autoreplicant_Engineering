@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://whow3nj8h0ev"]
+
+[ext_resource type="Script" path="res://game_elements/levels/elements/reverse_gravity_object.gd" id="1_bhttg"]
+[ext_resource type="PackedScene" uid="uid://pb72imfva3mt" path="res://game_elements/visual/polygon_view.tscn" id="3_35s6n"]
+
+[node name="reverse_gravity_object" type="RigidBody2D"]
+mass = 5.0
+gravity_scale = -0.4
+script = ExtResource("1_bhttg")
+
+[node name="PolygonView" parent="." instance=ExtResource("3_35s6n")]
+color = Color(0.388744, 0.151039, 0.0511112, 1)
+
+[node name="InnerShape" parent="PolygonView" index="0"]
+color = Color(0.557155, 0.215791, 0.159925, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[editable path="PolygonView"]
