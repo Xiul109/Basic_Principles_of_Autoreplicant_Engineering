@@ -2,7 +2,6 @@ extends Control
 
 const LEVEL_INTERFACE = preload("res://UI/level_interface.tscn")
 @onready var level_selector = $CenterContainer/LevelSelector
-
 var level_interface
 
 # Called when the node enters the scene tree for the first time.

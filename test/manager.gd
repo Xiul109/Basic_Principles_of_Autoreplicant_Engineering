@@ -16,11 +16,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var body = $replicas/RigidBody2D
+	print(body.position, " - ", body.global_position)
 
 
 func _on_timer_timeout():
-	var new_replicants : Array[Replicant]
-	for replicant in active_replicants:
-		new_replicants.append_array(replicant.replicate())
-	active_replicants = new_replicants
+	pass
+	#var new_replicants : Array[Replicant]
+	#for replicant in active_replicants:
+		#new_replicants.append_array(replicant.replicate())
+	#active_replicants = new_replicants
