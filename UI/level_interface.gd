@@ -3,8 +3,9 @@ extends Control
 @onready var replicant_editor := $ReplicantEditor
 var recovery_position : Vector2
 
-@onready var game_lost_interface: Control = $game_lost_interface
-@onready var game_won_interface: Control = $game_won_interface
+@onready var game_lost_interface = %game_lost_interface
+@onready var game_won_interface = %game_won_interface
+@onready var pause_interface = %pause_interface
 
 signal exit_to_menu()
 signal change_to_next_level()
@@ -33,6 +34,9 @@ func _ready():
 	game_won_interface.button_next_level.connect("pressed", next_level)
 	game_won_interface.button_retry.connect("pressed",_on_stop_button_pressed)
 	game_won_interface.button_menu.connect("pressed",go_to_menu)
+	
+	pause_interface.button_menu.connect("pressed",go_to_menu)
+	pause_interface.button_resume.connect("pressed",resume)
 
 func game_lost(reason:String):
 	if level_state=="Building":
@@ -64,6 +68,9 @@ func alert(text:String):
 	await get_tree().create_timer(5).timeout
 	alert_label.visible=false
 
+func resume():
+	pause_interface.visible = false
+	get_tree().paused = false
 
 func _on_play_button_pressed():
 	if level == null:
@@ -88,8 +95,8 @@ func _on_play_button_pressed():
 	recovery_position = level.base_replicant.position
 	level.base_replicant.position = Vector2.INF
 	# Hiding unuseful UI
-	$PlayButton.hide()
-	$StopButton.show()
+	%PlayButton.hide()
+	%StopButton.show()
 	level.building_area.hide()
 	level.clean_previews()
 	level.playing = true
@@ -112,8 +119,13 @@ func _on_stop_button_pressed():
 	level.base_replicant.show()
 	level.base_replicant.position = recovery_position
 	# Showing again UI
-	$PlayButton.show()
-	$StopButton.hide()
+	%PlayButton.show()
+	%StopButton.hide()
 	level.building_area.show()
 	level.update_previews()
 	level.playing = false
+
+
+func _on_pause_button_pressed():
+	get_tree().paused = true
+	pause_interface.visible = true
