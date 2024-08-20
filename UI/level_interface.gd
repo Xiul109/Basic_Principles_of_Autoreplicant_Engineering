@@ -37,7 +37,9 @@ func game_lost(reason:String):
 	if level_state=="Building":
 		return
 	game_lost_interface.visible=true
+	game_lost_interface.reason = reason
 	level.timer.stop()
+	get_tree().paused = true
 
 
 func game_won():
@@ -45,11 +47,12 @@ func game_won():
 		return
 	game_won_interface.visible=true
 	level.timer.stop()
-
+	get_tree().paused = true
 
 func go_to_menu():
 	exit_to_menu.emit()
-
+	get_tree().paused = false
+	
 func alert(text:String):
 	alert_label.visible=true
 	alert_label.text=text
@@ -63,7 +66,7 @@ func _on_play_button_pressed():
 	elif not replicant_editor.pieces_selector.are_all_pieces_placed():
 		alert("You need to use all the pieces and arrows.")
 		return
-		
+	
 	SignalBus.activate_delete_areas.emit(true)
 	level_state="Replicating"
 	# Setting copy 
@@ -95,6 +98,7 @@ func _on_stop_button_pressed():
 	SignalBus.activate_delete_areas.emit(false)
 	game_lost_interface.visible=false
 	game_won_interface.visible=false
+	get_tree().paused = false
 	
 	# Stoping timer
 	level.timer.stop()

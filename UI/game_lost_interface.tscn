@@ -7,6 +7,7 @@ bg_color = Color(0.2, 0.2, 0.2, 0.572549)
 corner_detail = 1
 
 [node name="game_lost_interface" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

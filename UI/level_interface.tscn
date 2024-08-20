@@ -61,6 +61,7 @@ offset_right = -7.0
 offset_bottom = -4.0
 
 [node name="game_won_interface" parent="." instance=ExtResource("5_twmdp")]
+process_mode = 3
 visible = false
 layout_mode = 1
 offset_left = 4.0

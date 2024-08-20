@@ -13,7 +13,7 @@ const REPLICANT = preload("res://game_elements/replicant.tscn")
 
 var arrows : Array[ReplicaArrow]
 
-func _process(delta):
+func _process(_delta):
 	for i in len(pieces):
 		$Line2D.points[i] = pieces[i].position
 	
@@ -43,13 +43,6 @@ func replicate(rep_mode: Mode = Mode.DEFAULT) -> Array[Replicant]:
 	
 	return replicas
 
-#func _create_replica() -> Replicant:
-	#var replica = REPLICANT.instantiate()
-	#for piece in pieces:
-		#var piece_copy = load(piece.scene_file_path).instantiate()
-		#piece_copy.position = piece.position
-		#replica.add_child(piece_copy)
-	#return replica
 
 func are_there_null_arrows():
 	for arrow in arrows:
@@ -69,10 +62,10 @@ func _mode_set(new_mode: Mode):
 			placers[0].mode = mode
 	if mode == Mode.PREVIEW:
 		modulate = Color(.3, .3, .3, .4)
-	#if mode != Mode.DEFAULT:
-		#$origin.show()
-	#else:
-		#$origin.hide()
+	if mode != Mode.DEFAULT:
+		$origin.show()
+	else:
+		$origin.hide()
 
 func fill_arrows():
 	for piece in pieces:
