@@ -7,11 +7,11 @@
 script = ExtResource("2_upwgt")
 
 [node name="PolygonView" parent="." node_paths=PackedStringArray("collision") instance=ExtResource("2_atsi2")]
-color = Color(0.987034, 0.991528, 0.999797, 1)
+color = Color(0.561632, 0, 0.114094, 1)
 collision = NodePath("../CollisionPolygon2D")
 
 [node name="InnerShape" parent="PolygonView" index="0"]
-color = Color(0.992157, 0, 0, 0.552941)
+color = Color(0.852224, 0.287544, 0.386697, 0.74902)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 modulate = Color(1, 0.227451, 0.247059, 0.862745)

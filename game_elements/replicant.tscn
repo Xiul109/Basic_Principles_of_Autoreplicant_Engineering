@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://osug8tsxi54w"]
 
 [ext_resource type="Script" path="res://game_elements/replicant.gd" id="1_43msj"]
-[ext_resource type="Texture2D" uid="uid://d3euavbbf0urg" path="res://assets/arrow_decorative_n.png" id="2_sjqk3"]
+[ext_resource type="Texture2D" uid="uid://c50v1nw4is0qm" path="res://assets/shape_icons/replicant_origin.png" id="2_qiucd"]
 
 [node name="Replicant" type="Node2D"]
 script = ExtResource("1_43msj")
@@ -9,7 +9,7 @@ script = ExtResource("1_43msj")
 [node name="origin" type="Sprite2D" parent="."]
 z_index = 2
 scale = Vector2(0.47, 0.47)
-texture = ExtResource("2_sjqk3")
+texture = ExtResource("2_qiucd")
 
 [node name="Line2D" type="Line2D" parent="."]
 closed = true
