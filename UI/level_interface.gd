@@ -7,6 +7,7 @@ var recovery_position : Vector2
 @onready var game_won_interface: Control = $game_won_interface
 
 signal exit_to_menu()
+signal change_to_next_level()
 
 @export var level : Level :
 	set(new_level):
@@ -29,7 +30,7 @@ func _ready():
 	game_lost_interface.button_menu.connect("pressed",go_to_menu)
 	
 	SignalBus.connect("game_won",game_won)
-	game_won_interface.button_next_level.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_next_level.connect("pressed", next_level)
 	game_won_interface.button_retry.connect("pressed",_on_stop_button_pressed)
 	game_won_interface.button_menu.connect("pressed",go_to_menu)
 
@@ -52,6 +53,10 @@ func game_won():
 func go_to_menu():
 	exit_to_menu.emit()
 	get_tree().paused = false
+
+func next_level():
+	get_tree().paused = false
+	change_to_next_level.emit()
 	
 func alert(text:String):
 	alert_label.visible=true
