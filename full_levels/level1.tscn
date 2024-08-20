@@ -20,10 +20,10 @@ lvel_instructions = "Place that wonderfull square on the building zone."
 position = Vector2(864, 33)
 
 [node name="CollisionPolygon2D" parent="target_zone" index="1"]
-polygon = PackedVector2Array(-830, 34, -754, 568, 340, 578, 372, 32)
+polygon = PackedVector2Array(-744, 415, -744, 543, 352, 543, 352, 415)
 
 [node name="CollisionPolygon2D" parent="building_area" index="1"]
-polygon = PackedVector2Array(98, 615, 20, 57, 1242, 53, 1212, 617)
+polygon = PackedVector2Array(64, 208, 64, 64, 1216, 64, 1216, 208)
 
 [node name="static_obstacle" parent="." index="4" instance=ExtResource("4_ycc6e")]
 
@@ -31,13 +31,13 @@ polygon = PackedVector2Array(98, 615, 20, 57, 1242, 53, 1212, 617)
 polygon = PackedVector2Array(-142, 238, 130, 640, 1176, 633, 1571, 332, 1457, 844, -137, 797)
 
 [node name="BaseReplicant" parent="." index="5"]
-position = Vector2(635, 611)
+position = Vector2(640, 144)
 
 [node name="lose_game_zone" parent="." index="6" instance=ExtResource("5_ag78p")]
 position = Vector2(62, 859)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
-polygon = PackedVector2Array(1885, -98, 1865, 324, -881, 250, -827, -239, -445, 75, 1645, 69)
+polygon = PackedVector2Array(1384, -1388, 1865, 324, -881, 250, -137, -1447, 1399, -1430, -69, -1337, -445, 75, 1645, 69)
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]

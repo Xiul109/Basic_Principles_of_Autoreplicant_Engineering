@@ -51,7 +51,7 @@ position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
 position = Vector2(50, 361)
-polygon = PackedVector2Array(1864, 221, -630, 269, -1000, -848, -358, 89, 1482, 3, 2112, -864)
+polygon = PackedVector2Array(1864, 221, -630, 269, -792, -2128, 1960, -1936, -688, -1848, -358, 89, 1482, 3, 2000, -2000)
 
 [node name="deleting_zone" parent="." index="7" instance=ExtResource("9_mnew3")]
 position = Vector2(760, 592)
@@ -104,7 +104,7 @@ polygon = PackedVector2Array(-56, -72, -56, 136, 56, 128, 64, -80)
 position = Vector2(656, 288)
 
 [node name="CollisionPolygon2D" parent="impulse_zone" index="1"]
-polygon = PackedVector2Array(-16, -32, -16, 32, 48, 32, 48, -32)
+polygon = PackedVector2Array(-16, -32, -16, 16, 48, 16, 48, -32, 48, -72, 88, -72, 16, -120, -56, -72, -16, -72)
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]

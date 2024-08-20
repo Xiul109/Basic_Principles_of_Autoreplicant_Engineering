@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6l4bfjagvvjq"]
+[gd_scene load_steps=9 format=3 uid="uid://c6l4bfjagvvjq"]
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_itscc"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_ywh4i"]
 [ext_resource type="PackedScene" uid="uid://b13y5ulk3wrnw" path="res://game_elements/shapes/triangle.tscn" id="3_wc3m0"]
 [ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="4_534pn"]
-[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="4_m512o"]
 [ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="5_pnqgs"]
 [ext_resource type="PackedScene" uid="uid://y6huvfyk425v" path="res://game_elements/levels/elements/lose_game_zone.tscn" id="6_r6out"]
 [ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="8_1c5y1"]
@@ -14,13 +13,8 @@ script = ExtResource("2_ywh4i")
 piece_type = ExtResource("3_wc3m0")
 count = 3
 
-[sub_resource type="Resource" id="Resource_uvf8e"]
-script = ExtResource("2_ywh4i")
-piece_type = ExtResource("4_m512o")
-count = 0
-
 [node name="Level" instance=ExtResource("1_itscc")]
-pieces = Array[ExtResource("2_ywh4i")]([SubResource("Resource_gy12u"), SubResource("Resource_uvf8e")])
+pieces = Array[ExtResource("2_ywh4i")]([SubResource("Resource_gy12u")])
 n_arrows = 1
 lvel_instructions = "A new shape, it does not look too stable."
 
@@ -48,13 +42,13 @@ polygon = PackedVector2Array(92, 619, 92, 507, 380, 507, 380, 619)
 polygon = PackedVector2Array(-204, -11, 96, 635, 368, 632, 1032, 624, 1226, 643, 1412, -31, 1454, 839, -168, 861)
 
 [node name="BaseReplicant" parent="." index="6"]
-position = Vector2(635, 611)
+position = Vector2(704, 596)
 
 [node name="lose_game_zone" parent="." index="7" instance=ExtResource("6_r6out")]
 position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
-polygon = PackedVector2Array(1864, 221, -630, 269, -746, -195, -356, 43, 1482, 3, 1878, -597)
+polygon = PackedVector2Array(1864, 221, -630, 269, -582, -1479, 1674, -1319, -510, -1223, -356, 43, 1482, 3, 1706, -1359)
 
 [node name="deleting_zone" parent="." index="8" instance=ExtResource("8_1c5y1")]
 position = Vector2(776, 368)

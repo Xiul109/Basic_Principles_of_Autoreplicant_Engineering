@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=3 uid="uid://bboopuhuxwcwq"]
+
+[ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_mnclu"]
+[ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_1yjvd"]
+[ext_resource type="PackedScene" uid="uid://cytu78s7047jn" path="res://game_elements/shapes/square.tscn" id="3_sethp"]
+[ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_vnctb"]
+[ext_resource type="PackedScene" uid="uid://dys5j8wks35vc" path="res://game_elements/levels/elements/building_zone.tscn" id="6_5n0hj"]
+[ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="7_dsg4q"]
+[ext_resource type="PackedScene" uid="uid://y6huvfyk425v" path="res://game_elements/levels/elements/lose_game_zone.tscn" id="8_nackx"]
+[ext_resource type="PackedScene" uid="uid://drv51lr1ckoja" path="res://game_elements/levels/elements/deleting_zone.tscn" id="9_ca3jw"]
+[ext_resource type="PackedScene" uid="uid://biltu22qcr2r3" path="res://game_elements/levels/elements/impulse_zone.tscn" id="10_mlrr3"]
+
+[sub_resource type="Resource" id="Resource_n28g5"]
+script = ExtResource("2_1yjvd")
+piece_type = ExtResource("3_sethp")
+count = 3
+
+[node name="Level" instance=ExtResource("1_mnclu")]
+pieces = Array[ExtResource("2_1yjvd")]([SubResource("Resource_n28g5")])
+n_arrows = 1
+lvel_instructions = "Look at that! A yellow thing, maybe it is usefull."
+
+[node name="target_zone" parent="." index="1" instance=ExtResource("5_vnctb")]
+position = Vector2(1352, 144)
+
+[node name="CollisionPolygon2D" parent="target_zone" index="1"]
+polygon = PackedVector2Array(-504, -128, -504, 168, -336, 168, -328, -128)
+
+[node name="building_area" parent="." index="2"]
+position = Vector2(1032, -80)
+
+[node name="CollisionPolygon2D" parent="building_area" index="1"]
+polygon = PackedVector2Array(-920, 600, -920, 704, -840, 704, -840, 600)
+
+[node name="building_area2" parent="." index="3" instance=ExtResource("6_5n0hj")]
+position = Vector2(1488, -72)
+
+[node name="CollisionPolygon2D" parent="building_area2" index="1"]
+polygon = PackedVector2Array(-920, 600, -920, 704, -840, 704, -840, 600)
+
+[node name="building_area3" parent="." index="4" instance=ExtResource("6_5n0hj")]
+position = Vector2(1272, -568)
+
+[node name="CollisionPolygon2D" parent="building_area3" index="1"]
+position = Vector2(0, 8)
+polygon = PackedVector2Array(-920, 600, -920, 704, -840, 704, -840, 600)
+
+[node name="static_obstacle" parent="." index="6" instance=ExtResource("7_dsg4q")]
+
+[node name="CollisionPolygon2D" parent="static_obstacle" index="1"]
+polygon = PackedVector2Array(1224, -392, 848, -128, -56, -48, -136, 120, 96, 635, 1226, 643, 1336, 224, 1088, -616, 2304, -232, 2408, 1440, -1112, 1416, -496, 96, -240, -312)
+
+[node name="BaseReplicant" parent="." index="7"]
+position = Vector2(152, 584)
+
+[node name="lose_game_zone" parent="." index="8" instance=ExtResource("8_nackx")]
+position = Vector2(46, 967)
+
+[node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
+position = Vector2(50, 361)
+polygon = PackedVector2Array(3416, 696, -1544, 416, -568, -1928, 1736, -2664, -528, -1648, -1328, 168, 3120, 552, 1848, -2664)
+
+[node name="deleting_zone" parent="." index="9" instance=ExtResource("9_ca3jw")]
+position = Vector2(2096, -96)
+
+[node name="CollisionPolygon2D" parent="deleting_zone" index="1"]
+polygon = PackedVector2Array(-96, -56, -96, 32, 160, 32, 160, -56)
+
+[node name="deleting_zone2" parent="." index="10" instance=ExtResource("9_ca3jw")]
+position = Vector2(1760, -248)
+
+[node name="CollisionPolygon2D" parent="deleting_zone2" index="1"]
+polygon = PackedVector2Array(-352, -16, -352, 32, 160, 32, 160, -16)
+
+[node name="static_obstacle_pike" parent="." index="11" instance=ExtResource("7_dsg4q")]
+position = Vector2(1904, 200)
+rotation = 1.58561
+
+[node name="CollisionPolygon2D" parent="static_obstacle_pike" index="1"]
+polygon = PackedVector2Array(304, -256, 720, -264, 720, -208, 400, -224)
+
+[node name="static_obstacle_pike2" parent="." index="12" instance=ExtResource("7_dsg4q")]
+position = Vector2(1808, 208)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" parent="static_obstacle_pike2" index="1"]
+polygon = PackedVector2Array(304, -256, 720, -264, 720, -208, 400, -224)
+
+[node name="static_obstacle_pole" parent="." index="13" instance=ExtResource("7_dsg4q")]
+position = Vector2(408, 576)
+
+[node name="CollisionPolygon2D" parent="static_obstacle_pole" index="1"]
+polygon = PackedVector2Array(304, -256, 720, -264, 720, -208, 310.641, -202.104)
+
+[node name="static_obstacle_pole2" parent="." index="14" instance=ExtResource("7_dsg4q")]
+position = Vector2(584, -392)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" parent="static_obstacle_pole2" index="1"]
+polygon = PackedVector2Array(304, -256, 720, -264, 720, -208, 310.641, -202.104)
+
+[node name="static_obstacle_pole3" parent="." index="15" instance=ExtResource("7_dsg4q")]
+position = Vector2(832, -352)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" parent="static_obstacle_pole3" index="1"]
+polygon = PackedVector2Array(304, -256, 720, -264, 720, -208, 310.641, -202.104)
+
+[node name="lose_game_zone2" parent="." index="16" instance=ExtResource("8_nackx")]
+position = Vector2(544, -424)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" parent="lose_game_zone2" index="1"]
+polygon = PackedVector2Array(-216, 8, -216, 128, 208, 128, 208, 8)
+
+[node name="impulse_zone4" parent="." index="17" instance=ExtResource("10_mlrr3")]
+position = Vector2(488, 304)
+rotation = 1.5708
+direction = "RIGHT"
+
+[node name="CollisionPolygon2D" parent="impulse_zone4" index="1"]
+polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
+
+[node name="impulse_zone5" parent="." index="18" instance=ExtResource("10_mlrr3")]
+position = Vector2(840, 464)
+rotation = 1.5708
+direction = "RIGHT"
+impulse_force = 1500
+
+[node name="CollisionPolygon2D" parent="impulse_zone5" index="1"]
+polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
+
+[node name="impulse_zone6" parent="." index="19" instance=ExtResource("10_mlrr3")]
+position = Vector2(1152, 512)
+impulse_force = 1500
+
+[node name="CollisionPolygon2D" parent="impulse_zone6" index="1"]
+polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
+
+[editable path="target_zone"]
+[editable path="target_zone/PolygonView"]
+[editable path="building_area"]
+[editable path="building_area/PolygonView"]
+[editable path="building_area2"]
+[editable path="building_area2/PolygonView"]
+[editable path="building_area3"]
+[editable path="building_area3/PolygonView"]
+[editable path="static_obstacle"]
+[editable path="static_obstacle/PolygonView"]
+[editable path="lose_game_zone"]
+[editable path="lose_game_zone/PolygonView"]
+[editable path="deleting_zone"]
+[editable path="deleting_zone/PolygonView"]
+[editable path="deleting_zone2"]
+[editable path="deleting_zone2/PolygonView"]
+[editable path="static_obstacle_pike"]
+[editable path="static_obstacle_pike/PolygonView"]
+[editable path="static_obstacle_pike2"]
+[editable path="static_obstacle_pike2/PolygonView"]
+[editable path="static_obstacle_pole"]
+[editable path="static_obstacle_pole/PolygonView"]
+[editable path="static_obstacle_pole2"]
+[editable path="static_obstacle_pole2/PolygonView"]
+[editable path="static_obstacle_pole3"]
+[editable path="static_obstacle_pole3/PolygonView"]
+[editable path="lose_game_zone2"]
+[editable path="lose_game_zone2/PolygonView"]
+[editable path="impulse_zone4"]
+[editable path="impulse_zone4/PolygonView"]
+[editable path="impulse_zone5"]
+[editable path="impulse_zone5/PolygonView"]
+[editable path="impulse_zone6"]
+[editable path="impulse_zone6/PolygonView"]

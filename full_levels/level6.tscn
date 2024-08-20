@@ -39,13 +39,13 @@ polygon = PackedVector2Array(98, 615, 96, 451, 368, 448, 376, 600)
 polygon = PackedVector2Array(-204, -11, 96, 635, 368, 632, 424, 808, 1056, 808, 1032, 624, 1226, 643, 1412, -31, 1454, 839, -168, 861)
 
 [node name="BaseReplicant" parent="." index="5"]
-position = Vector2(635, 611)
+position = Vector2(216, 544)
 
 [node name="lose_game_zone" parent="." index="6" instance=ExtResource("6_r6out")]
 position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
-polygon = PackedVector2Array(1864, 221, -630, 269, -746, -195, -356, 43, 1482, 3, 1878, -597)
+polygon = PackedVector2Array(1864, 221, -630, 269, -558, -1615, -356, 43, 1482, 3, 1602, -1527, -526, -1479, 1738, -1767)
 
 [node name="deleting_zone" parent="." index="7" instance=ExtResource("8_1c5y1")]
 position = Vector2(416, 672)
