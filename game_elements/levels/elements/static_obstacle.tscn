@@ -13,5 +13,6 @@ color = Color(0.388744, 0.151039, 0.0511112, 1)
 color = Color(0.557155, 0.215791, 0.159925, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+modulate = Color(0.580392, 0.184314, 0, 0.815686)
 
 [editable path="PolygonView"]

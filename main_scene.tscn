@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnh57qej5dk3w"]
+[gd_scene load_steps=13 format=3 uid="uid://cnh57qej5dk3w"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_docgf"]
 [ext_resource type="PackedScene" uid="uid://bi2nqbknnkpcr" path="res://UI/level_selector.tscn" id="2_f3enm"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dh0f0th87g77k" path="res://full_levels/level5.tscn" id="7_8nypc"]
 [ext_resource type="PackedScene" uid="uid://b2lftff0wtgcx" path="res://full_levels/level8.tscn" id="8_4yq1m"]
 [ext_resource type="PackedScene" uid="uid://c6l4bfjagvvjq" path="res://full_levels/level7.tscn" id="9_tvx64"]
+[ext_resource type="PackedScene" uid="uid://cfy1tf1c8tqgw" path="res://full_levels/level9.tscn" id="11_efg3o"]
+[ext_resource type="PackedScene" uid="uid://byrk28fe31vjq" path="res://full_levels/level10.tscn" id="12_66cbb"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -31,6 +33,6 @@ grow_vertical = 2
 
 [node name="LevelSelector" parent="CenterContainer" instance=ExtResource("2_f3enm")]
 layout_mode = 2
-levels = Array[PackedScene]([ExtResource("3_n7cql"), ExtResource("4_h5abr"), ExtResource("5_cek7w"), ExtResource("6_f5do7"), ExtResource("7_8nypc"), ExtResource("5_dndso"), ExtResource("9_tvx64"), ExtResource("8_4yq1m")])
+levels = Array[PackedScene]([ExtResource("3_n7cql"), ExtResource("4_h5abr"), ExtResource("5_cek7w"), ExtResource("6_f5do7"), ExtResource("7_8nypc"), ExtResource("5_dndso"), ExtResource("9_tvx64"), ExtResource("8_4yq1m"), ExtResource("11_efg3o"), ExtResource("12_66cbb")])
 
 [connection signal="level_selected" from="CenterContainer/LevelSelector" to="." method="_on_level_selector_level_selected"]

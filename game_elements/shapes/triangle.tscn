@@ -12,7 +12,7 @@ script = ExtResource("1_lm0nc")
 icon = ExtResource("2_dmngv")
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -40, 48, -8, -40, -8)
+polygon = PackedVector2Array(0, -32, 48, 0, -40, 0)
 
 [node name="replica_arrows" type="Node2D" parent="."]
 
