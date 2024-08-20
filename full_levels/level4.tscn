@@ -35,20 +35,29 @@ polygon = PackedVector2Array(-256, -32, -256, 56, 112, 56, 112, -32)
 polygon = PackedVector2Array(-204, -11, 96, 635, 1226, 643, 1412, -31, 1776, 40, 1720, 1080, -496, 1072, -496, 96)
 
 [node name="BaseReplicant" parent="." index="5"]
-position = Vector2(635, 611)
+position = Vector2(1040, 80)
 
 [node name="lose_game_zone" parent="." index="6" instance=ExtResource("6_hb76q")]
 position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
 position = Vector2(50, 361)
-polygon = PackedVector2Array(1864, 221, -630, 269, -1000, -848, -358, 89, 1482, 3, 2112, -864)
+polygon = PackedVector2Array(1864, 221, -630, 269, -1008, -1816, -358, 89, 1482, 3, 1752, -1832, -960, -1776, 1872, -1968)
 
 [node name="static_obstacle2" parent="." index="7" instance=ExtResource("5_81uu5")]
 position = Vector2(600, 392)
 
 [node name="CollisionPolygon2D" parent="static_obstacle2" index="1"]
 polygon = PackedVector2Array(-344, -264, 720, -264, 720, -208, -344, -208)
+
+[node name="Label" type="Label" parent="." index="8"]
+offset_left = 760.0
+offset_top = 480.0
+offset_right = 1264.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 30
+text = "Advanced lesson number 1: Autoreplicants can replicate through the wall."
+autowrap_mode = 2
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]

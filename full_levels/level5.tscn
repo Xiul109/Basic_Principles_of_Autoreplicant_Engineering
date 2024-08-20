@@ -43,14 +43,14 @@ polygon = PackedVector2Array(-256, 240, -256, 400, 128, 400, 120, 240)
 polygon = PackedVector2Array(-204, -11, 96, 635, 1226, 643, 1412, -31, 1776, 40, 1720, 1080, -496, 1072, -496, 96)
 
 [node name="BaseReplicant" parent="." index="5"]
-position = Vector2(635, 611)
+position = Vector2(1024, 576)
 
 [node name="lose_game_zone" parent="." index="6" instance=ExtResource("6_3tp0h")]
 position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
 position = Vector2(50, 361)
-polygon = PackedVector2Array(1864, 221, -630, 269, -1000, -848, -358, 89, 1482, 3, 2112, -864)
+polygon = PackedVector2Array(1864, 221, -630, 269, -696, -2024, -358, 89, 1482, 3, 1856, -1624, -640, -2000, 2008, -1776)
 
 [node name="static_obstacle2" parent="." index="7" instance=ExtResource("5_ofp5d")]
 position = Vector2(600, 392)

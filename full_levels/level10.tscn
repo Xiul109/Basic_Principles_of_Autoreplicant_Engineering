@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dx12p86m7rbs1" path="res://game_elements/levels/level.tscn" id="1_3v7u8"]
 [ext_resource type="Script" path="res://game_elements/levels/elements/level_pieces.gd" id="2_ibo2b"]
-[ext_resource type="PackedScene" uid="uid://bc7t637r7spky" path="res://game_elements/shapes/L_shape.tscn" id="3_ovlr2"]
+[ext_resource type="PackedScene" uid="uid://dsc23ry34ende" path="res://game_elements/shapes/long_bar.tscn" id="3_btlfm"]
 [ext_resource type="PackedScene" uid="uid://b13y5ulk3wrnw" path="res://game_elements/shapes/triangle.tscn" id="4_dgnuf"]
 [ext_resource type="PackedScene" uid="uid://dmeisesvoqy1o" path="res://game_elements/levels/elements/target_zone.tscn" id="5_lclqc"]
 [ext_resource type="PackedScene" uid="uid://b4bfv74tx0ymn" path="res://game_elements/levels/elements/static_obstacle.tscn" id="6_hv4ho"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_gy12u"]
 script = ExtResource("2_ibo2b")
-piece_type = ExtResource("3_ovlr2")
+piece_type = ExtResource("3_btlfm")
 count = 1
 
 [sub_resource type="Resource" id="Resource_n28g5"]
@@ -50,7 +50,7 @@ position = Vector2(46, 967)
 
 [node name="CollisionPolygon2D" parent="lose_game_zone" index="1"]
 position = Vector2(50, 361)
-polygon = PackedVector2Array(1864, 221, -630, 269, -1000, -848, -358, 89, 1482, 3, 2112, -864)
+polygon = PackedVector2Array(1864, 221, -630, 269, -568, -1928, 1840, -1936, -528, -1648, -358, 89, 1482, 3, 1864, -2000)
 
 [node name="deleting_zone" parent="." index="7" instance=ExtResource("8_cbr0s")]
 position = Vector2(1056, 600)
@@ -98,26 +98,21 @@ rotation = 1.5708
 [node name="CollisionPolygon2D" parent="lose_game_zone2" index="1"]
 polygon = PackedVector2Array(-56, 8, -56, 128, 208, 128, 208, 8)
 
-[node name="impulse_zone2" parent="." index="14" instance=ExtResource("9_esuyt")]
-position = Vector2(336, 520)
-impulse_force = 2500
+[node name="impulse_zone4" parent="." index="14" instance=ExtResource("9_esuyt")]
+position = Vector2(336, 528)
+impulse_force = 3000
 
-[node name="InnerShape" parent="impulse_zone2/PolygonView" index="0"]
-color = Color(0.992157, 0.941176, 0, 0.552941)
+[node name="CollisionPolygon2D" parent="impulse_zone4" index="1"]
+polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
 
-[node name="CollisionPolygon2D" parent="impulse_zone2" index="1"]
-polygon = PackedVector2Array(-16, -32, -16, 32, 112, 32, 112, -32)
-
-[node name="impulse_zone3" parent="." index="15" instance=ExtResource("9_esuyt")]
-position = Vector2(656, 480)
+[node name="impulse_zone5" parent="." index="15" instance=ExtResource("9_esuyt")]
+position = Vector2(848, 536)
+rotation = -1.5708
 direction = "LEFT"
 impulse_force = 1500
 
-[node name="InnerShape" parent="impulse_zone3/PolygonView" index="0"]
-color = Color(0.992157, 0.941176, 0, 0.552941)
-
-[node name="CollisionPolygon2D" parent="impulse_zone3" index="1"]
-polygon = PackedVector2Array(-16, -32, -16, 32, 112, 32, 112, -32)
+[node name="CollisionPolygon2D" parent="impulse_zone5" index="1"]
+polygon = PackedVector2Array(16, -56, 16, 32, 88, 32, 88, -56, 136, -56, 48, -136, -32, -56)
 
 [editable path="target_zone"]
 [editable path="target_zone/PolygonView"]
@@ -141,7 +136,7 @@ polygon = PackedVector2Array(-16, -32, -16, 32, 112, 32, 112, -32)
 [editable path="static_obstacle_pole2/PolygonView"]
 [editable path="lose_game_zone2"]
 [editable path="lose_game_zone2/PolygonView"]
-[editable path="impulse_zone2"]
-[editable path="impulse_zone2/PolygonView"]
-[editable path="impulse_zone3"]
-[editable path="impulse_zone3/PolygonView"]
+[editable path="impulse_zone4"]
+[editable path="impulse_zone4/PolygonView"]
+[editable path="impulse_zone5"]
+[editable path="impulse_zone5/PolygonView"]
