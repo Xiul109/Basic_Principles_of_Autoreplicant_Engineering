@@ -16,15 +16,29 @@ func _ready():
 
 func _on_level_selector_level_selected(level_scene: PackedScene):
 	level_selector.hide()
+	_load_level(level_scene)
+
+func _load_level(level_scene: PackedScene):
 	level_interface = LEVEL_INTERFACE.instantiate()
 	level_interface.exit_to_menu.connect(_show_menu)
+	level_interface.change_to_next_level.connect(_change_to_next_level)
 	add_child(level_interface)
 	var level = level_scene.instantiate()
 	level_interface.level = level
-	
-	
-func _show_menu():
+
+func _clean_level():
 	if level_interface == null:
 		return
 	level_interface.queue_free()
+
+func _show_menu():
+	_clean_level()
 	level_selector.show()
+
+func _change_to_next_level():
+	_clean_level()
+	level_selector.level_selected_i += 1
+	if level_selector.level_selected_i >= level_selector.levels.size():
+		level_selector.show()
+	else:
+		_load_level(level_selector.levels[level_selector.level_selected_i])

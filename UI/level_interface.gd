@@ -3,10 +3,12 @@ extends Control
 @onready var replicant_editor := $ReplicantEditor
 var recovery_position : Vector2
 
-@onready var game_lost_interface: Control = $game_lost_interface
-@onready var game_won_interface: Control = $game_won_interface
+@onready var game_lost_interface = %game_lost_interface
+@onready var game_won_interface = %game_won_interface
+@onready var pause_interface = %pause_interface
 
 signal exit_to_menu()
+signal change_to_next_level()
 
 @export var level : Level :
 	set(new_level):
@@ -29,15 +31,20 @@ func _ready():
 	game_lost_interface.button_menu.connect("pressed",go_to_menu)
 	
 	SignalBus.connect("game_won",game_won)
-	game_won_interface.button_next_level.connect("pressed",_on_stop_button_pressed)
+	game_won_interface.button_next_level.connect("pressed", next_level)
 	game_won_interface.button_retry.connect("pressed",_on_stop_button_pressed)
 	game_won_interface.button_menu.connect("pressed",go_to_menu)
+	
+	pause_interface.button_menu.connect("pressed",go_to_menu)
+	pause_interface.button_resume.connect("pressed",resume)
 
 func game_lost(reason:String):
 	if level_state=="Building":
 		return
 	game_lost_interface.visible=true
+	game_lost_interface.reason = reason
 	level.timer.stop()
+	get_tree().paused = true
 
 
 func game_won():
@@ -45,17 +52,25 @@ func game_won():
 		return
 	game_won_interface.visible=true
 	level.timer.stop()
-
+	get_tree().paused = true
 
 func go_to_menu():
 	exit_to_menu.emit()
+	get_tree().paused = false
 
+func next_level():
+	get_tree().paused = false
+	change_to_next_level.emit()
+	
 func alert(text:String):
 	alert_label.visible=true
 	alert_label.text=text
 	await get_tree().create_timer(5).timeout
 	alert_label.visible=false
 
+func resume():
+	pause_interface.visible = false
+	get_tree().paused = false
 
 func _on_play_button_pressed():
 	if level == null:
@@ -63,7 +78,7 @@ func _on_play_button_pressed():
 	elif not replicant_editor.pieces_selector.are_all_pieces_placed():
 		alert("You need to use all the pieces and arrows.")
 		return
-		
+	
 	SignalBus.activate_delete_areas.emit(true)
 	SignalBus.activate_impulse_areas.emit(true)
 	level_state="Replicating"
@@ -81,8 +96,8 @@ func _on_play_button_pressed():
 	recovery_position = level.base_replicant.position
 	level.base_replicant.position = Vector2.INF
 	# Hiding unuseful UI
-	$PlayButton.hide()
-	$StopButton.show()
+	%PlayButton.hide()
+	%StopButton.show()
 	level.building_area.hide()
 	level.clean_previews()
 	level.playing = true
@@ -97,6 +112,7 @@ func _on_stop_button_pressed():
 	SignalBus.activate_impulse_areas.emit(false)
 	game_lost_interface.visible=false
 	game_won_interface.visible=false
+	get_tree().paused = false
 	
 	# Stoping timer
 	level.timer.stop()
@@ -105,8 +121,13 @@ func _on_stop_button_pressed():
 	level.base_replicant.show()
 	level.base_replicant.position = recovery_position
 	# Showing again UI
-	$PlayButton.show()
-	$StopButton.hide()
+	%PlayButton.show()
+	%StopButton.hide()
 	level.building_area.show()
 	level.update_previews()
 	level.playing = false
+
+
+func _on_pause_button_pressed():
+	get_tree().paused = true
+	pause_interface.visible = true

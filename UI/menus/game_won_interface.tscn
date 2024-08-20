@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://baibn74emvb8s"]
 
-[ext_resource type="Script" path="res://UI/game_won_interface.gd" id="1_ouju5"]
+[ext_resource type="Script" path="res://UI/menus/game_won_interface.gd" id="1_ouju5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11nvx"]
 bg_color = Color(0.2, 0.2, 0.2, 0.572549)
 corner_detail = 1
 
 [node name="game_won_interface" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -2,7 +2,7 @@ extends Control
 
 const START_LEVEL_BUTTON = preload("res://UI/StartLevelButton.tscn")
 
-@onready var grid_container = $GridContainer
+@onready var grid_container = %level_container
 
 @export var levels : Array[PackedScene]
 @export var won_color := Color(.3, .8, .4)

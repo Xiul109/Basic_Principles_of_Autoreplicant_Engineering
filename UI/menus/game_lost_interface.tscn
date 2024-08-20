@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://de1ch156rclga"]
 
-[ext_resource type="Script" path="res://UI/game_lost_interface.gd" id="1_cl8j1"]
+[ext_resource type="Script" path="res://UI/menus/game_lost_interface.gd" id="1_cl8j1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dply6"]
 bg_color = Color(0.2, 0.2, 0.2, 0.572549)
 corner_detail = 1
 
 [node name="game_lost_interface" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
