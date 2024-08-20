@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bkmnskaabvmoa" path="res://full_levels/level1.tscn" id="3_n7cql"]
 [ext_resource type="PackedScene" uid="uid://k0ohyjevn8on" path="res://full_levels/level2.tscn" id="4_h5abr"]
 [ext_resource type="PackedScene" uid="uid://d181ffw6tqci5" path="res://full_levels/level3.tscn" id="5_cek7w"]
+[ext_resource type="PackedScene" uid="uid://d1vve53aglr4f" path="res://full_levels/level6.tscn" id="5_dndso"]
 [ext_resource type="PackedScene" uid="uid://d3qgejbsbp3dr" path="res://full_levels/level4.tscn" id="6_f5do7"]
-[ext_resource type="PackedScene" uid="uid://dh0f0th87g77k" path="res://full_levels/level5.tscn" id="7_8nypc"]
 [ext_resource type="PackedScene" uid="uid://b2lftff0wtgcx" path="res://full_levels/level8.tscn" id="8_4yq1m"]
 [ext_resource type="PackedScene" uid="uid://c6l4bfjagvvjq" path="res://full_levels/level7.tscn" id="9_tvx64"]
 [ext_resource type="PackedScene" uid="uid://cfy1tf1c8tqgw" path="res://full_levels/level9.tscn" id="11_efg3o"]
 [ext_resource type="PackedScene" uid="uid://byrk28fe31vjq" path="res://full_levels/level10.tscn" id="12_66cbb"]
-[ext_resource type="PackedScene" uid="uid://c1lsqy67sm5ru" path="res://full_levels/level11.tscn" id="13_ljkfk"]
-[ext_resource type="PackedScene" uid="uid://bboopuhuxwcwq" path="res://full_levels/level12.tscn" id="14_ssj7t"]
+[ext_resource type="PackedScene" path="res://full_levels/level11.tscn" id="13_ljkfk"]
+[ext_resource type="PackedScene" path="res://full_levels/level12.tscn" id="14_ssj7t"]
 [ext_resource type="AudioStream" uid="uid://cc764o24f67h6" path="res://full_levels/PerituneMaterial_SnowChill_loop.mp3" id="15_56hqu"]
 
 [node name="MainScene" type="Control"]
@@ -37,7 +37,7 @@ grow_vertical = 2
 
 [node name="LevelSelector" parent="CenterContainer" instance=ExtResource("2_f3enm")]
 layout_mode = 2
-levels = Array[PackedScene]([ExtResource("3_n7cql"), ExtResource("4_h5abr"), ExtResource("5_cek7w"), ExtResource("6_f5do7"), ExtResource("7_8nypc"), ExtResource("9_tvx64"), ExtResource("8_4yq1m"), ExtResource("11_efg3o"), ExtResource("12_66cbb"), ExtResource("13_ljkfk"), ExtResource("14_ssj7t")])
+levels = Array[PackedScene]([ExtResource("3_n7cql"), ExtResource("4_h5abr"), ExtResource("5_cek7w"), ExtResource("6_f5do7"), ExtResource("5_dndso"), ExtResource("9_tvx64"), ExtResource("8_4yq1m"), ExtResource("11_efg3o"), ExtResource("12_66cbb"), ExtResource("13_ljkfk"), ExtResource("14_ssj7t")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
